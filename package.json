@@ -1,7 +1,7 @@
 {
-  "name": "final-project",
+  "name": "beat-box",
   "version": "0.0.1",
-  "description": "A review time project",
+  "description": "A Marketplace for producers and artists",
   "main": "index.js",
   "scripts": {
     "start": "npm run build-watch & npm run start-server ",
