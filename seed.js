@@ -1,6 +1,6 @@
 
-const { db } = require('./server/db/index')
-const shoe = require('./server/db/shoe')
+const { db, user, order, shoe, order_shoe } = require('./server/db/index')
+// const shoe = require('./server/db/shoe')
 
 
 const addSomething = async () => {
@@ -145,7 +145,7 @@ const seed = async () => {
     await db.sync({ force: true })
     await addSomething()
   } catch (err) {
-    console.log(red(err))
+    console.log(err)
   }
 }
 
@@ -156,9 +156,9 @@ const seed = async () => {
 async function runSeed() {
   try {
     await seed()
-    console.log(green('Seeding success!'))
+    console.log('Seeding success!')
   } catch (err) {
-    console.error(red('Oh noes! Something went wrong!'))
+    console.error('Oh noes! Something went wrong!')
     console.error(err)
   } finally {
     db.close()
