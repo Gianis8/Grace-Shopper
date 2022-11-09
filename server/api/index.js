@@ -4,6 +4,7 @@ const router = express.Router()
 
 router.use("/shoes", require("./shoes"))
 router.use("/orders", require("./orders"))
+router.use("/users", require("./users"))
 
 
 router.use((req, res, next) => {
