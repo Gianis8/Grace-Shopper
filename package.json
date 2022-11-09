@@ -1,5 +1,5 @@
 {
-  "name": "beat-box",
+  "name": "grace-shopper",
   "version": "0.0.1",
   "description": "A Marketplace for producers and artists",
   "main": "index.js",
@@ -15,9 +15,10 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
     "axios": "^0.27.2",
+    "bcrypt": "^5.1.0",
     "chalk": "^4.1.2",
     "cors": "^2.8.5",
-    "express": "^4.18.1",
+    "express": "^4.18.2",
     "lorem-ipsum": "^2.0.8",
     "nodemon": "^2.0.16",
     "pg": "^8.7.3",
@@ -25,7 +26,7 @@
     "react-dom": "^18.1.0",
     "react-redux": "^v8.0.1",
     "react-router-dom": "^6.3.0",
-    "sequelize": "^6.20.0",
+    "sequelize": "^6.25.5",
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2"
   },
