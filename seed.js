@@ -156,11 +156,7 @@ const seed = async () => {
     await db.sync({ force: true })
     await addSomething()
   } catch (err) {
-<<<<<<< HEAD
-    console.log(red(err))
-=======
     console.log(err)
->>>>>>> 38d9e0a1575fbd7fa4a813d6e41f302534d892df
   }
 }
 
