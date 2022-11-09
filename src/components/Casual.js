@@ -2,9 +2,7 @@ import React from 'react'
 
 const Casual = () => {
   return (
-    <div>
-      <main> Casual Page</main>
-    </div>
+    <h1> Casual Page</h1>
   )
 }
 

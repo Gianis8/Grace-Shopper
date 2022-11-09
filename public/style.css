@@ -2,11 +2,12 @@
  * {
     box-sizing: border-box;
     font-family: arial, sans-serif;
+    color: rgb(191, 182, 182)
   }
   
   body {
-    background: linear-gradient(#ffffff, #c0c0c0);
-    height: 100vh;
+    background: linear-gradient(#000000, #070505);
+    height: 150vh;
     padding: 0;
     margin: 0;
     width: 100vw;
@@ -30,4 +31,18 @@
   a{
     margin: 25px;
     color:white
+  }
+  h1 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  img {
+    height: 190px;
+    width: 180px;
+    margin-left:3px;
+  }
+  .active {
+    color:rgb(255, 2, 255);
   }

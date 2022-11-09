@@ -2,9 +2,8 @@ import React from 'react'
 
 const Athletic = () => {
   return (
-    <div>
-      <main> Athletic Page</main>
-    </div>
+      <h1> Athletic Page</h1>
+    
   )
 }
 
