@@ -2,9 +2,20 @@ import React from 'react'
 
 const Athletic = () => {
   return (
-    <div>
-      <main> Athletic Page</main>
-    </div>
+    <>
+      <h1> Athletic Page</h1>
+     <label>Filtering : </label>
+     <select id="filter">
+  <option value="price">Price</option>
+  <option value="brand">Brand</option>
+  <option value="sizes">Sizes</option>
+</select>
+<img src='https://image.peltzshoes.com/images/products/1_2245632_ZM.jpg' />
+<img src='https://image.peltzshoes.com/images/products/1_2245632_ZM.jpg' />
+
+<img src='https://image.peltzshoes.com/images/products/1_2245632_ZM.jpg' />
+
+    </>
   )
 }
 

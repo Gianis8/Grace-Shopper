@@ -23,7 +23,9 @@ const Main = () => {
         <Route path='/casual' element={<Casual />} ></Route>
         <Route path='/login' element={<Login />} ></Route>
       </Routes>
-    
+    <footer>
+  <h2>its a footer</h2>
+</footer>
     </> 
    
   )
