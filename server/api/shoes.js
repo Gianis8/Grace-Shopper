@@ -4,7 +4,7 @@ const { shoe } = require('../db')
 // GET for /api/shoes/athletic
 router.get('/athletic', async (req, res, next) => {
     try {
-        res.send(await shoe.findAll({ where: { type: athletic } }))
+        res.send(await shoe.findAll({ where: { type: 'athletic' } }))
     } catch (err) {
         next(err)
     }
@@ -13,7 +13,7 @@ router.get('/athletic', async (req, res, next) => {
 // GET for /api/shoes/casual
 router.get('/casual', async (req, res, next) => {
     try {
-        res.send(await shoe.findAll({ where: { type: casual } }))
+        res.send(await shoe.findAll({ where: { type: 'casual' } }))
     } catch (err) {
         next(err)
     }

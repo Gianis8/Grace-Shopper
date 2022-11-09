@@ -1,6 +1,15 @@
 const router = require('express').Router()
 const { user } = require('../db')
 
+// GET for /api/users
+router.get('/', async (req, res, next) => {
+    try {
+        res.send(await user.findAll())
+    } catch (err) {
+        next(err)
+    }
+})
+
 // GET for /api/users/:id
 router.get('/:id', async (req, res, next) => {
     try {
