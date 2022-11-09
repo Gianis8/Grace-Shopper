@@ -1,5 +1,6 @@
 
 const { db } = require('./server/db/index')
+const shoe = require('./server/db/shoe')
 
 
 const addSomething = async () => {
@@ -39,6 +40,7 @@ const addSomething = async () => {
     cost: "70.99",
     shippingAddress: "123 Delivery Street, New York, NY. 10001",
     status: "complete",
+    userId: 1,
   }, {
     cost: "109.95",
     shippingAddress: "2468 Green Ave. Apt 1A, Chicago, IL, 56798",
@@ -126,6 +128,14 @@ const addSomething = async () => {
     quantity: 4,
   }]
 
+  await user.create(user1);
+  await user.create(user2);
+  await user.create(user3);
+  await user.create(user4);
+
+  await Promise.all(order.map(order => order.create(orders)))
+  await Promise.all(shoe.map(shoe => shoe.create(shoes)))
+  await Promise.all(order_shoe.map(orderShoe => orderShoe.create(orderShoe)))
 }
 
 
