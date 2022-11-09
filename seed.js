@@ -125,20 +125,6 @@ const addSomething = async () => {
     
   }]
 
-  const orderShoe = [{
-    unitPrice: 110.00,
-    quantity: 1,
-  }, {
-    unitPrice: 300.87,
-    quantity: 2,
-  }, {
-    unitPrice: 250.56,
-    quantity: 2, 
-  }, {
-    unitPrice: 546.98,
-    quantity: 4,
-  }]
-
   await user.create(user1);
   await user.create(user2);
   await user.create(user3);
@@ -146,7 +132,8 @@ const addSomething = async () => {
 
   await Promise.all(order1.map(orderRow => order.create(orderRow)))
   await Promise.all(shoesSeed.map(shoesRow => shoe.create(shoesRow)))
-  await Promise.all(orderShoe.map(orderShoeRow => order_shoe.create(orderShoeRow)))
+
+  // await order1[0].addShoe(shoesSeed[1])
 }
 
 
@@ -156,11 +143,7 @@ const seed = async () => {
     await db.sync({ force: true })
     await addSomething()
   } catch (err) {
-<<<<<<< HEAD
-    console.log(red(err))
-=======
     console.log(err)
->>>>>>> 38d9e0a1575fbd7fa4a813d6e41f302534d892df
   }
 }
 
