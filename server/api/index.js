@@ -1,9 +1,10 @@
-
 const express = require("express")
 const router = express.Router()
 
 
-//router.use("/urladdress", require("./theApiRouter"))
+router.use("/shoes", require("./shoes"))
+router.use("/orders", require("./orders"))
+router.use("/users", require("./users"))
 
 
 router.use((req, res, next) => {
