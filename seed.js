@@ -112,6 +112,20 @@ const addSomething = async () => {
     imageUrl: "https://www.birkenstock.com/on/demandware.static/-/Sites-master-catalog/default/dw2c766a11/151183/151183_sole.jpg"
   }]
 
+  const orderShoe = [{
+    unitPrice: 110.00,
+    quantity: 1,
+  }, {
+    unitPrice: 300.87,
+    quantity: 2,
+  }, {
+    unitPrice: 250.56,
+    quantity: 2, 
+  }, {
+    unitPrice: 546.98,
+    quantity: 4,
+  }]
+
 }
 
 
