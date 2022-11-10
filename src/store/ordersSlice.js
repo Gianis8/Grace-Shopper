@@ -3,14 +3,16 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 
 const initialState = {
+    cart:[],
     orders: [],
     order: {},
     loading: true
 }
 
-export const fetchOrdersAsync = createAsyncThunk("fetchOrdersAsync", async()=>{
-    console.log("firing axios call fetch all orders")
-    const { data } = await axios.get('')
+export const fetchCartAsync = createAsyncThunk("fetchOrdersAsync", async()=>{
+    console.log("firing axios call")
+    const { data } = await axios.get('/api/orders/cart')
+    console.log("fetch cart:",data)
     return data
 })
 
@@ -19,21 +21,26 @@ export const ordersSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers:(builder)=>{
-        builder.addCase(fetchOrdersAsync.pending, (state,action)=> {
+        builder.addCase(fetchCartAsync.pending, (state,action)=> {
             console.log("Orders are pending")
             state.loading = true
         })
-        builder.addCase(fetchOrdersAsync.fulfilled, (state, action)=>{
+        builder.addCase(fetchCartAsync.fulfilled, (state, action)=>{
             console.log('Orders aqquired!')
-            state.orders = action.payload
+            state.cart = action.payload
             state.loading = false
         })
     }
 
 })
 
-export const selectOrders = (state) => {
-    return state.orders.orders
+export const selectCart = (state) => {
+    return state.orders.cart
 }
+
+export const addToCart = createAsyncThunk('addToCart', async (shoe)=>{
+    console.log("axios post request")
+    const {data} = await axios.post
+})
 
 export default ordersSlice.reducer

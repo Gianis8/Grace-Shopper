@@ -40,37 +40,37 @@ const addSomething = async () => {
     cost: "70.99",
     shippingAddress: "123 Delivery Street, New York, NY. 10001",
     status: "complete",
-    // userId: 1,
+    userId: 1,
   }, {
     cost: "109.95",
     shippingAddress: "2468 Green Ave. Apt 1A, Chicago, IL, 56798",
     status: "cart",
-    // userId: 1
+    userId: 1
   }, {
     cost: "56.05",
     shippingAddress: "12469 Brown Drive, Dallas, TX, 32215",
     status: "complete",
-    // userId: 2
+    userId: 2
   }, {
     cost: "19.95",
     shippingAddress: "245 Bridge Court. Apt 7D, New Haven, CT, 23526",
     status: "cart",
-    // userId: 3
+    userId: 3
   }, {
     cost: "209.95",
     shippingAddress: "4563 Evergreen Dr., Charleston, SC, 63632",
     status: "complete",
-    // userId: 4
+    userId: 4
   }, {
     cost: "449.99",
     shippingAddress: "65472 E 74th St. Unit 1849, New York, NY, 10037",
     status: "complete",
-    // userId: 2
+    userId: 2
   }, {
     cost: "69.01",
     shippingAddress: "2468 Green Ave. Apt 1A, Chicago, IL, 56798",
     status: "cart",
-    // userId: 4
+    userId: 4
   }]
 
   const shoesSeed = [{
