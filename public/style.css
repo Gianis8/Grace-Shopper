@@ -1,7 +1,8 @@
+
 * {
   box-sizing: border-box;
   font-family: arial, sans-serif;
-  color: rgb(191, 182, 182)
+  color: rgb(191, 182, 182);
 }
 
 body {
@@ -38,6 +39,9 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+h3 {
+  color: aliceblue;
 }
 
 img {
@@ -76,10 +80,5 @@ form {
 input { 
   border: solid black;
   font-size: 20px;
-  color: black;
-  
-}
-
-h3{
   color: black;
 }
