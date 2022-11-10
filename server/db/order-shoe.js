@@ -3,7 +3,7 @@ const db = require('./database')
 
 const order_shoe = db.define("order_shoe", {
     unitPrice: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
         defaultValue: 0,
         validate: {
             min: 0
@@ -17,5 +17,4 @@ const order_shoe = db.define("order_shoe", {
         }
     }
 })
-
 module.exports = order_shoe
