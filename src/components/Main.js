@@ -1,6 +1,7 @@
 import React from 'react'
 import { Routes, Route, NavLink } from 'react-router-dom'
 import { HomePage, Athletic,Cart,Casual,Login } from '../components'
+import SingleShoe from './SingleShoe'
 
 /* 
     This is you entry point for your routes
@@ -22,6 +23,7 @@ const Main = () => {
         <Route path='/cart' element={<Cart />} ></Route>
         <Route path='/casual' element={<Casual />} ></Route>
         <Route path='/login' element={<Login />} ></Route>
+        <Route path='/shoe/:id' element={<SingleShoe/>} ></Route>
       </Routes>
     
     </> 

@@ -20,6 +20,13 @@ export const fetchCasualShoesAsync = createAsyncThunk("fetchCasualShoesAsync", a
     return data
 })
 
+export const fetchSingleShoe = createAsyncThunk("fetchSingleShoe", async (id)=> {
+    console.log("firing axios call")
+    const { data } = await axios.get(`/api/shoes/${id}`)
+    console.log("single shoe returned:", data)
+    return data
+})
+
 export const shoesSlice = createSlice({
     name:"shoes",
     initialState,
@@ -43,6 +50,15 @@ export const shoesSlice = createSlice({
             state.casual = action.payload
             state.loading = false
         })
+        builder.addCase(fetchSingleShoe.pending, (state, action)=>{
+            console.log('Fetching single shoe')
+            state.loading = true
+        })
+        builder.addCase(fetchSingleShoe.fulfilled, (state,action)=>{
+            console.log("single shoe found")
+            state.loading = false
+            state.shoe = action.payload
+        })
     }
 })
 
@@ -52,6 +68,10 @@ export const selectAthletic = (state) => {
 
 export const selectCasual = (state) => {
     return state.shoes.casual
+}
+
+export const selectShoe = (state) =>{
+    return state.shoes.shoe
 }
 
 export default shoesSlice.reducer
