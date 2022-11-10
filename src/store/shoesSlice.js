@@ -27,6 +27,8 @@ export const fetchSingleShoe = createAsyncThunk("fetchSingleShoe", async (id)=> 
     return data
 })
 
+
+
 export const shoesSlice = createSlice({
     name:"shoes",
     initialState,

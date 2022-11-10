@@ -14,6 +14,9 @@ const SingleShoe = ()=>{
         dispatch(fetchSingleShoe(id))
     },[dispatch])
 
+    const handleClick = async () => {
+        dispatch()
+    }
     return (
         <>
         <h1>{shoe.name}</h1>
@@ -35,6 +38,7 @@ const SingleShoe = ()=>{
         </select>
         <h3>Color: {shoe.color}</h3>
         <p>{shoe.description}</p>
+        <button onClick={handleClick}></button>
 
         </>
     )
