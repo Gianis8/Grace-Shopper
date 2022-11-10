@@ -136,19 +136,19 @@ const addSomething = async () => {
   await ordersSample[0].addShoe(shoesSample[1])
   await ordersSample[0].addShoe(shoesSample[2])
   await ordersSample[0].addShoe(shoesSample[1])
-  await ordersSample[1].addShoe(shoesSample[1])
+  await ordersSample[1].addShoe(shoesSample[0])
   await ordersSample[2].addShoe(shoesSample[1])
-  await ordersSample[2].addShoe(shoesSample[1])
-  await ordersSample[2].addShoe(shoesSample[1])
-  await ordersSample[3].addShoe(shoesSample[1])
-  await ordersSample[3].addShoe(shoesSample[1])
-  await ordersSample[3].addShoe(shoesSample[1])
-  await ordersSample[3].addShoe(shoesSample[1])
-  await ordersSample[4].addShoe(shoesSample[1])
-  await ordersSample[4].addShoe(shoesSample[1])
+  await ordersSample[2].addShoe(shoesSample[2])
+  await ordersSample[2].addShoe(shoesSample[3])
+  await ordersSample[3].addShoe(shoesSample[3])
+  await ordersSample[3].addShoe(shoesSample[4])
+  await ordersSample[3].addShoe(shoesSample[5])
+  await ordersSample[3].addShoe(shoesSample[3])
+  await ordersSample[4].addShoe(shoesSample[0])
+  await ordersSample[4].addShoe(shoesSample[5])
   await ordersSample[5].addShoe(shoesSample[1])
-  await ordersSample[5].addShoe(shoesSample[1])
-  await ordersSample[6].addShoe(shoesSample[1])
+  await ordersSample[5].addShoe(shoesSample[4])
+  await ordersSample[6].addShoe(shoesSample[5])
 
 
 }
@@ -160,6 +160,8 @@ const seed = async () => {
     await db.sync({ force: true })
     await addSomething()
   } catch (err) {
+
+    console.log(red(err))
     console.log(err)
   }
 }
