@@ -16,12 +16,18 @@ const Casual = () => {
   console.log("casual shoes:",shoes)
   return (
     <>
-    <h1> Casual Page</h1>
-    <ul>
-      {shoes.map((shoe)=>{
-        return <li key={shoe.id}><h3>{shoe.name}</h3><img src={shoe.imageUrl}/></li>
-      })}
-    </ul>
+      <h1> Casual Page</h1>
+      <ul>
+        {shoes.map((shoe)=>{
+          return <li key={shoe.id}><h3>{shoe.name}</h3><img src={shoe.imageUrl}/></li>
+        })}
+      </ul>
+      <label>Filtering : </label>
+      <select id="filter">
+        <option value="price">Price</option>
+        <option value="brand">Brand</option>
+        <option value="sizes">Sizes</option>
+      </select>
     </>
   )
 }

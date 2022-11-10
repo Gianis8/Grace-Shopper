@@ -53,5 +53,4 @@ export const selectAthletic = (state) => {
 export const selectCasual = (state) => {
     return state.shoes.casual
 }
-
 export default shoesSlice.reducer
