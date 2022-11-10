@@ -17,5 +17,4 @@ const order_shoe = db.define("order_shoe", {
         }
     }
 })
-
 module.exports = order_shoe

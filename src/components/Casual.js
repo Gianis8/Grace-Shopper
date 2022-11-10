@@ -23,6 +23,12 @@ const Casual = () => {
         return <li key={shoe.id}><Link to={`/shoe/${shoe.id}`}><h3>{shoe.name}</h3><img src={shoe.imageUrl}/></Link></li>
       })}
     </ul>
+      <label>Filtering : </label>
+      <select id="filter">
+        <option value="price">Price</option>
+        <option value="brand">Brand</option>
+        <option value="sizes">Sizes</option>
+      </select>
     </>
   )
 }
