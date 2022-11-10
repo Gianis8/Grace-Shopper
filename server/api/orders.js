@@ -3,8 +3,16 @@ const { order, shoe } = require('../db')
 
 // GET for /api/orders/cart
 router.get('/cart', async (req, res, next) => {
+    const id = 3 // have this variable correspond to whoevers logged in
+    console.log("express route reached")
     try {
-        res.send(await order.findAll({ where: { userId: id, status: 'cart' }, include: [shoe] }))
+        res.send(await order.findAll({ 
+            where: { 
+                //userId: id,
+                status: 'cart' 
+            }, 
+            include: [shoe] 
+        }))
     } catch (err) {
         next(err)
     }
