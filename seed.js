@@ -125,19 +125,19 @@ const addSomething = async () => {
     
   }]
 
-  const orderShoe = [{
-    unitPrice: 110.00,
-    quantity: 1,
-  }, {
-    unitPrice: 300.87,
-    quantity: 2,
-  }, {
-    unitPrice: 250.56,
-    quantity: 2, 
-  }, {
-    unitPrice: 546.98,
-    quantity: 4,
-  }]
+  // const orderShoe = [{
+  //   unitPrice: 110.00,
+  //   quantity: 1,
+  // }, {
+  //   unitPrice: 300.87,
+  //   quantity: 2,
+  // }, {
+  //   unitPrice: 250.56,
+  //   quantity: 2, 
+  // }, {
+  //   unitPrice: 546.98,
+  //   quantity: 4,
+  // }]
 
   await user.create(user1);
   await user.create(user2);
@@ -146,7 +146,15 @@ const addSomething = async () => {
 
   await Promise.all(order1.map(orderRow => order.create(orderRow)))
   await Promise.all(shoesSeed.map(shoesRow => shoe.create(shoesRow)))
-  await Promise.all(orderShoe.map(orderShoeRow => order_shoe.create(orderShoeRow)))
+  
+  await order1[0].add(shoesSeed[0])
+  await order1[0].add(shoesSeed[1])
+  await order1[1].add(shoesSeed[0])
+  await order1[1].add(shoesSeed[1])
+  await order1[1].add(shoesSeed[2])
+  await order1[2].add(shoesSeed[1])
+  await order1[2].add(shoesSeed[3])
+  await order1[1].add(shoesSeed[5])
 }
 
 
@@ -156,11 +164,7 @@ const seed = async () => {
     await db.sync({ force: true })
     await addSomething()
   } catch (err) {
-
     console.log(err)
-
-    console.log(err)
-
   }
 }
 
