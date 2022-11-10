@@ -1,6 +1,6 @@
 
 const { db, user, order, shoe, order_shoe } = require('./server/db/index')
-// const shoe = require('./server/db/shoe')
+
 
 
 const addSomething = async () => {
@@ -40,37 +40,37 @@ const addSomething = async () => {
     cost: "70.99",
     shippingAddress: "123 Delivery Street, New York, NY. 10001",
     status: "complete",
-    userId: 1,
+    // userId: 1,
   }, {
     cost: "109.95",
     shippingAddress: "2468 Green Ave. Apt 1A, Chicago, IL, 56798",
     status: "cart",
-    userId: 1
+    // userId: 1
   }, {
     cost: "56.05",
     shippingAddress: "12469 Brown Drive, Dallas, TX, 32215",
     status: "complete",
-    userId: 2
+    // userId: 2
   }, {
     cost: "19.95",
     shippingAddress: "245 Bridge Court. Apt 7D, New Haven, CT, 23526",
     status: "cart",
-    userId: 3
+    // userId: 3
   }, {
     cost: "209.95",
     shippingAddress: "4563 Evergreen Dr., Charleston, SC, 63632",
     status: "complete",
-    userId: 4
+    // userId: 4
   }, {
     cost: "449.99",
     shippingAddress: "65472 E 74th St. Unit 1849, New York, NY, 10037",
     status: "complete",
-    userId: 2
+    // userId: 2
   }, {
     cost: "69.01",
     shippingAddress: "2468 Green Ave. Apt 1A, Chicago, IL, 56798",
     status: "cart",
-    userId: 4
+    // userId: 4
   }]
 
   const shoesSeed = [{
@@ -125,36 +125,32 @@ const addSomething = async () => {
     
   }]
 
-  // const orderShoe = [{
-  //   unitPrice: 110.00,
-  //   quantity: 1,
-  // }, {
-  //   unitPrice: 300.87,
-  //   quantity: 2,
-  // }, {
-  //   unitPrice: 250.56,
-  //   quantity: 2, 
-  // }, {
-  //   unitPrice: 546.98,
-  //   quantity: 4,
-  // }]
-
   await user.create(user1);
   await user.create(user2);
   await user.create(user3);
   await user.create(user4);
 
-  await Promise.all(order1.map(orderRow => order.create(orderRow)))
-  await Promise.all(shoesSeed.map(shoesRow => shoe.create(shoesRow)))
+  const ordersSample = await Promise.all(order1.map(orderRow => order.create(orderRow)))
+  const shoesSample = await Promise.all(shoesSeed.map(shoesRow => shoe.create(shoesRow)))
   
-  await order1[0].add(shoesSeed[0])
-  await order1[0].add(shoesSeed[1])
-  await order1[1].add(shoesSeed[0])
-  await order1[1].add(shoesSeed[1])
-  await order1[1].add(shoesSeed[2])
-  await order1[2].add(shoesSeed[1])
-  await order1[2].add(shoesSeed[3])
-  await order1[1].add(shoesSeed[5])
+  await ordersSample[0].addShoe(shoesSample[1])
+  await ordersSample[0].addShoe(shoesSample[2])
+  await ordersSample[0].addShoe(shoesSample[1])
+  await ordersSample[1].addShoe(shoesSample[1])
+  await ordersSample[2].addShoe(shoesSample[1])
+  await ordersSample[2].addShoe(shoesSample[1])
+  await ordersSample[2].addShoe(shoesSample[1])
+  await ordersSample[3].addShoe(shoesSample[1])
+  await ordersSample[3].addShoe(shoesSample[1])
+  await ordersSample[3].addShoe(shoesSample[1])
+  await ordersSample[3].addShoe(shoesSample[1])
+  await ordersSample[4].addShoe(shoesSample[1])
+  await ordersSample[4].addShoe(shoesSample[1])
+  await ordersSample[5].addShoe(shoesSample[1])
+  await ordersSample[5].addShoe(shoesSample[1])
+  await ordersSample[6].addShoe(shoesSample[1])
+
+
 }
 
 
