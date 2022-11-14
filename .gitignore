@@ -1,26 +1,3 @@
-# <<<<<<< HEAD
-
-# node_modules/*
-# dist/
-# public/bundle.js
-# public/bundle.js.map
-
-# # NPM errors
-# npm-debug.log
-
-# # OSX
-# .DS_Store
-
-# # Vim stuff
-# *.swp
-
-# .DS_Store
-
-# package.lock.json
-# package-lock.json
-# node_modules
-# =======
-
 node_modules/*
 dist/
 public/bundle.js
@@ -38,5 +15,6 @@ npm-debug.log
 .DS_Store
 
 package.lock.json
-# package-lock.json
-# >>>>>>> cdc9fa5f788240a25d105f29aab4fb53ec5a86f7
+package-lock.json
+
+.env
