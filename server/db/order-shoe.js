@@ -2,10 +2,6 @@ const Sequelize = require("sequelize")
 const db = require('./database')
 
 const order_shoe = db.define("order_shoe", {
-    // orderId: {
-    //     type: Sequelize.INTEGER,
-
-    // },
     unitPrice: {
         type: Sequelize.DECIMAL,
         defaultValue: 0,
@@ -15,7 +11,7 @@ const order_shoe = db.define("order_shoe", {
     },
     quantity: {
         type:Sequelize.INTEGER,
-        defaultValue: 0,
+        defaultValue: 1,
         validate: {
             min: 0
         }

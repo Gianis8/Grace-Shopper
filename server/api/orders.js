@@ -1,10 +1,20 @@
 const router = require('express').Router()
-const { order, shoe } = require('../db')
+const { order, shoe, order_shoe } = require('../db')
 
 // GET for /api/orders/cart
 router.get('/cart', async (req, res, next) => {
+    const id = 3 // have this variable correspond to whoevers logged in
+    console.log("express route reached")
     try {
-        res.send(await order.findAll({ where: { userId: id, status: 'cart' }, include: [shoe] }))
+        const cart = await order.findAll({ 
+            where: { 
+                userId: id,
+                status: 'cart' 
+            }, 
+            include: shoe 
+        })
+        console.log(cart)
+        res.send(cart)
     } catch (err) {
         next(err)
     }

@@ -50,8 +50,12 @@ img {
   margin-left: 3px;
 }
 
+ul {
+  list-style: none;
+}
+
 .active {
-  color: rgb(255, 2, 255);
+  color: darkviolet;
 }
 footer {
   align-items: center;
@@ -68,7 +72,7 @@ section {
   width:60vh;
   margin-left: 100px;
   justify-content: center;
-  background-color: rgb(147, 117, 255);
+  background-color: darkviolet;
   color:black;
 }
 form {
@@ -81,4 +85,61 @@ input {
   border: solid black;
   font-size: 20px;
   color: black;
+}
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+.cartList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 80vw;
+}
+
+
+
+.shoeInCart {
+  display: flex;
+  background-color: darkviolet;
+  margin-top: 10px;
+  width: 75vw;
+  justify-content: space-between;
+}
+
+.cartLiLeft {
+  display: flex;
+}
+
+.cartImg {
+  height: 100px;
+  width: 100px;
+  margin: 20px;
+  border-radius: 8px;
+  border: rgb(113, 6, 158);
+}
+
+.cartLiRight {
+  margin: 20px;
+}
+
+.cartCheckout {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: darkviolet;
+  color: #c0c0c0;
+  width: 25vw;
+  left: 9in;
+}
+
+#order {
+  color: #000000;
+  height: 30px;
+  width: 70px;
+  margin: 20px;
 }
