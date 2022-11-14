@@ -16,6 +16,11 @@ export const fetchCartAsync = createAsyncThunk("fetchOrdersAsync", async()=>{
     return data
 })
 
+export const addToCart = createAsyncThunk('addToCart', async (shoe)=>{
+    console.log("axios post request")
+    const {data} = await axios.post
+})
+
 export const ordersSlice = createSlice({
     name: "orders",
     initialState,
@@ -29,6 +34,7 @@ export const ordersSlice = createSlice({
             console.log('Orders aqquired!')
             state.cart = action.payload
             state.loading = false
+           
         })
     }
 
@@ -38,9 +44,6 @@ export const selectCart = (state) => {
     return state.orders.cart
 }
 
-export const addToCart = createAsyncThunk('addToCart', async (shoe)=>{
-    console.log("axios post request")
-    const {data} = await axios.post
-})
+
 
 export default ordersSlice.reducer

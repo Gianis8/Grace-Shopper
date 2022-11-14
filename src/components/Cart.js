@@ -6,26 +6,41 @@ import { fetchCartAsync, selectCart } from '../store/ordersSlice'
 const Cart = () => {
   const dispatch = useDispatch()
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(fetchCartAsync())
-  },[dispatch])
+  }, [dispatch])
 
-  const cart =useSelector(selectCart)
+  const cart = useSelector(selectCart)
+  console.log(cart)
   return (
     <>
-    <h1> Cart Page</h1>
-    <ul>
-      {cart.map((order)=>{
-        console.log(order)
+      <h1> Cart </h1>
+      {cart.map((order) => {
         return (
-          <li key={order.id} className="cartOrders"><h3>Order id#{order.id}</h3><ul className="shoesOfOrder">{order.shoes.map((shoe)=>{
-            return (
-              <li key={shoe.id} className="shoeInOrder"><h4>{shoe.name}</h4></li>
-            )
-          })}</ul><h5 className="orderCost">${order.cost}</h5></li>
+          <div key={order.id} className="cart">
+            <ul className="cartList">
+              {order.shoes.map((shoe) => {
+                return (
+                  <li key={shoe.id} className="shoeInCart">
+                    <div className='cartLiLeft'>
+                      <img src={shoe.imageUrl} className="cartImg"></img>
+                      <h4>{shoe.name}</h4>
+                    </div>
+                    <div className='cartLiRight'>
+                      <h4>Unit Price:{shoe.order_shoe.unitPrice}</h4>
+                      <h5>Quantity:{shoe.order_shoe.quantity}</h5>
+                    </div>
+                  </li>
+                )
+              })}
+            </ul>
+            <div className="cartCheckout">
+            <h2 >Total ${order.cost}</h2><button id="order">Order</button>
+            </div>
+          </div>
         )
       })}
-    </ul>
+
     </>
   )
 }
