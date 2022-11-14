@@ -6,6 +6,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import usersSlice from './usersSlice'
 import shoesSlice from './shoesSlice'
 import ordersSlice from './ordersSlice'
+import authReducer from './authSlice'
 
 
 // main redux store
@@ -13,7 +14,8 @@ const store = configureStore({
   reducer: {
     users: usersSlice,
     shoes: shoesSlice,
-    orders: ordersSlice
+    orders: ordersSlice,
+    auth: authReducer,
   },
 })
 
