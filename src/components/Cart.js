@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchCartAsync, selectCart } from '../store/ordersSlice'
+import { fetchCartAsync, selectCart, selectCartTotal } from '../store/ordersSlice'
 
 const Cart = () => {
   const dispatch = useDispatch()
@@ -11,7 +11,8 @@ const Cart = () => {
   }, [dispatch])
 
   const cart = useSelector(selectCart)
-  console.log(cart)
+  const total = useSelector(selectCartTotal)
+  console.log(cart, "total:", total)
   return (
     <>
       <h1> Cart </h1>
@@ -29,13 +30,14 @@ const Cart = () => {
                     <div className='cartLiRight'>
                       <h4>Unit Price:{shoe.order_shoe.unitPrice}</h4>
                       <h5>Quantity:{shoe.order_shoe.quantity}</h5>
+                      
                     </div>
                   </li>
                 )
               })}
             </ul>
             <div className="cartCheckout">
-            <h2 >Total ${order.cost}</h2><button id="order">Order</button>
+            <h2 >Total ${total}</h2><button id="order">Order</button>
             </div>
           </div>
         )

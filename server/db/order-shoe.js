@@ -16,5 +16,5 @@ const order_shoe = db.define("order_shoe", {
             min: 0
         }
     }
-})
+}, {timestamps:false})
 module.exports = order_shoe

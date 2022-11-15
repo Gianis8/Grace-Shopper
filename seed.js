@@ -134,97 +134,22 @@ const addSomething = async () => {
   const ordersSample = await Promise.all(order1.map(orderRow => order.create(orderRow)))
   const shoesSample = await Promise.all(shoesSeed.map(shoesRow => shoe.create(shoesRow)))
   
-  await ordersSample[0].addShoe(shoesSample[0])
-  await ordersSample[0].addShoe(shoesSample[1])
-  await ordersSample[0].addShoe(shoesSample[2])
-  await ordersSample[1].addShoe(shoesSample[1])
-  await ordersSample[2].addShoe(shoesSample[2])
-  await ordersSample[2].addShoe(shoesSample[3])
-  await ordersSample[2].addShoe(shoesSample[4])
-  await ordersSample[3].addShoe(shoesSample[3])
-  await ordersSample[3].addShoe(shoesSample[4])
-  await ordersSample[3].addShoe(shoesSample[5])
-  await ordersSample[3].addShoe(shoesSample[6])
-  await ordersSample[4].addShoe(shoesSample[0])
-  await ordersSample[4].addShoe(shoesSample[1])
-  await ordersSample[5].addShoe(shoesSample[5])
-  await ordersSample[5].addShoe(shoesSample[6])
-  await ordersSample[6].addShoe(shoesSample[0])
-  
-
-  let example = await order_shoe.findOne({ 
-    where: { 
-      orderId: 1, 
-      shoeId: 2, 
-    },
-  })
-  await example.update({quantity: 2})
-
-  let example2 = await order_shoe.findOne({ 
-    where: { 
-      orderId: 2, 
-      shoeId: 2, 
-    },
-  })
-  await example2.update({quantity: 3})
-
-  let example3 = await order_shoe.findOne({ 
-    where: { 
-      orderId: 3, 
-      shoeId: 3, 
-    },
-  })
-  await example3.update({quantity: 3})
-
-  let example4 = await order_shoe.findOne({ 
-    where: { 
-      orderId: 3, 
-      shoeId: 4, 
-    },
-  })
-  await example4.update({quantity: 2})
-
-  let example5 = await order_shoe.findOne({ 
-    where: { 
-      orderId: 3, 
-      shoeId: 5, 
-    },
-  })
-  await example5.update({quantity: 4})
-  
-
-  // let example6 = await order_shoe.findOne({ 
-  //   where: { 
-  //     orderId: 4, 
-  //     shoeId: 5, 
-  //   },
-  // })
-  // await example6.update({quantity: 2})
-
-  // let example7 = await order_shoe.findOne({ 
-  //   where: { 
-  //     orderId: 4, 
-  //     shoeId: 5, 
-  //   },
-  // })
-  // await example7.update({quantity: 4})
-
-  // let example8 = await order_shoe.findOne({ 
-  //   where: { 
-  //     orderId: 5, 
-  //     shoeId: 1, 
-  //   },
-  // })
-  // await example8.update({quantity: 7})
-
-  // let example9 = await order_shoe.findOne({ 
-  //   where: { 
-  //     orderId: 6, 
-  //     shoeId: 2, 
-  //   },
-  // })
-  // await example9.update({quantity: 4})
-
+  await ordersSample[0].addShoe(shoesSample[0], {through: {quantity: 2, unitPrice:79.99}})
+  await ordersSample[0].addShoe(shoesSample[1], {through: {quantity: 2, unitPrice:53.99}})
+  await ordersSample[0].addShoe(shoesSample[2], {through: {quantity: 2, unitPrice:20.99}})
+  await ordersSample[1].addShoe(shoesSample[1], {through: {quantity: 2, unitPrice:53.99}})
+  await ordersSample[2].addShoe(shoesSample[2], {through: {quantity: 2, unitPrice:20.99}})
+  await ordersSample[2].addShoe(shoesSample[3], {through: {quantity: 2, unitPrice:99.99}})
+  await ordersSample[2].addShoe(shoesSample[4], {through: {quantity: 2, unitPrice:119.99}})
+  await ordersSample[3].addShoe(shoesSample[3], {through: {quantity: 2, unitPrice:99.99}})
+  await ordersSample[3].addShoe(shoesSample[4], {through: {quantity: 2, unitPrice:119.99}})
+  await ordersSample[3].addShoe(shoesSample[5], {through: {quantity: 2, unitPrice:80.99}})
+  await ordersSample[3].addShoe(shoesSample[6], {through: {quantity: 2, unitPrice:95.99}})
+  await ordersSample[4].addShoe(shoesSample[0], {through: {quantity: 2, unitPrice:79.99}})
+  await ordersSample[4].addShoe(shoesSample[1], {through: {quantity: 2, unitPrice:53.99}})
+  await ordersSample[5].addShoe(shoesSample[5], {through: {quantity: 2, unitPrice:80.99}})
+  await ordersSample[5].addShoe(shoesSample[6], {through: {quantity: 2, unitPrice:95.99}})
+  await ordersSample[6].addShoe(shoesSample[0], {through: {quantity: 2, unitPrice:79.99}})
 
 }
 
