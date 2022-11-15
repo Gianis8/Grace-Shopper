@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import AuthForm from './AuthForm'
 import Home from './HomePage'
+import Login from './Login';
 import { me } from '../store/authSlice'
 
 /**
@@ -13,6 +14,9 @@ const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const dispatch = useDispatch();
 
+
+ 
+
   useEffect(() => {
     dispatch(me());
   }, []);
@@ -21,8 +25,8 @@ const AppRoutes = () => {
     <div>
       {isLoggedIn ? (
         <Routes>
-          <Route path="/*" element={<Home />} />
-          <Route to="/home" element={<Home />} />
+          <Route path="/*" element={<Login />} />
+          {/* <Route to="/login" element={<Login />} /> */}
         </Routes>
       ) : (
         <Routes>

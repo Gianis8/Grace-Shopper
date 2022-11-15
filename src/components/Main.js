@@ -13,8 +13,8 @@ const Main = () => {
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/athletic'>Athletic</NavLink>
         <NavLink to='/casual'> Casual</NavLink>
-            <NavLink to='/login'>Login</NavLink>
-            <NavLink to='/cart'>Cart</NavLink>
+        <NavLink to='/login'>Login/Signout</NavLink>
+        <NavLink to='/cart'>Cart</NavLink>
       </nav>
       <Routes>
         <Route path='/' element={<HomePage />} ></Route>

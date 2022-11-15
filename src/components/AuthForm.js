@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { authenticate } from '../store/authSlice'
+import { authenticate, logout } from '../store/authSlice'
 
 /**
   The AuthForm component can be used for Login or Sign Up.
@@ -11,6 +11,15 @@ import { authenticate } from '../store/authSlice'
 const AuthForm = ({ name, displayName }) => {
   const { error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
+  const handleLogout = (evt) => {
+    evt.preventDefault();
+    // const formName = evt.target.name;
+    // const username = evt.target.username.value;
+    // const password = evt.target.password.value;
+    dispatch(logout());
+    };
+  // console.log("******" , logout)
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
