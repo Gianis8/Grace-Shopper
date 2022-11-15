@@ -11,28 +11,28 @@ const addSomething = async () => {
     username: "Joseph123",
     email: "jd123@email.com",
     password: "password123",
-    
+    isAdmin: true,
   }
 
   const user2 = {
     username: "Mudassar456",
     email: "md456@email.com",
     password: "password456",
-    
+    isAdmin: true,
   }
 
   const user3 = {
     username: "Ian789",
     email: "ih456@email.com",
     password: "password789",
-    
+    isAdmin: true,
   }
 
   const user4 = {
     username: "Steve246",
     email: "sz246@email.com",
     password: "password246",
-    
+    isAdmin: true,
   }
 
 
