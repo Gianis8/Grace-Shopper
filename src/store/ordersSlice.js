@@ -44,6 +44,16 @@ export const selectCart = (state) => {
     return state.orders.cart
 }
 
+export const selectCartTotal = (state) => {
+    let total = 0
+    state.orders.cart.map((order)=> {
+        order.shoes.map(shoe => {
+            total += shoe.order_shoe.unitPrice * shoe.order_shoe.quantity
+        })
+    })
+    return total
+}
+
 
 
 export default ordersSlice.reducer
