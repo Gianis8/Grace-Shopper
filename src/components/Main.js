@@ -13,9 +13,12 @@ const Main = () => {
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/athletic'>Athletic</NavLink>
         <NavLink to='/casual'> Casual</NavLink>
-            <NavLink to='/login'>Login</NavLink>
-            <NavLink to='/cart'>Cart</NavLink>
-            <NavLink to='/admin'>Admin</NavLink>
+
+        <NavLink to='/login'>Login/Signout</NavLink>
+        <NavLink to='/cart'>Cart</NavLink>
+
+        <NavLink to='/admin'>Admin</NavLink>
+
       </nav>
       <Routes>
         <Route path='/' element={<HomePage />} ></Route>
