@@ -32,7 +32,7 @@ const addSomething = async () => {
     username: "Steve246",
     email: "sz246@email.com",
     password: "password246",
-    isAdmin: true,
+    isAdmin: false,
   }
 
 

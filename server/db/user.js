@@ -34,6 +34,10 @@ const User = db.define("user", {
         validate: {
             isCreditCard:true
         }
+    },
+    isAdmin: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false
     }
 })
 
