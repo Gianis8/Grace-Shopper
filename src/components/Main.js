@@ -2,22 +2,28 @@ import React from 'react'
 import { Routes, Route, NavLink } from 'react-router-dom'
 import { HomePage, Athletic, Cart, Casual, AppRoutes, Admin, AdminOrders, AdminUserData, SignUp } from '../components'
 import SingleShoe from './SingleShoe'
-import { selectUser } from '../store/usersSlice'
+import { selectUser, selectAdmin } from '../store/usersSlice'
+import { useSelector } from 'react-redux'
 
 /* 
     This is you entry point for your routes
 */
 const Main = () => {
+  const admin = useSelector(selectAdmin)
+  const user = useSelector(selectUser)
   return (
     <>
       <nav>
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/athletic'>Athletic</NavLink>
         <NavLink to='/casual'> Casual</NavLink>
-        <NavLink to='/admin'>Admin</NavLink>
+        {admin ? 
+          <NavLink to='/admin'>Admin</NavLink>
+          : null
+        }
         <NavLink to='/login'>Login</NavLink>
         <NavLink to='/cart'>Cart</NavLink>
-        
+
       </nav>
       <Routes>
 

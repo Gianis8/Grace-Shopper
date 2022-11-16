@@ -4,7 +4,8 @@ import axios from "axios"
 const initialState = {
     users: [],
     user: {},
-    loading: true
+    loading: true,
+    isAdmin: false
 }
 
 export const fetchUsersAsync = createAsyncThunk("fetchUsersAsync", async()=>{
@@ -50,6 +51,10 @@ export const selectUsers = (state) => {
 export const selectUser = (state) => {
     console.log(state.users)
     return state.users.user
+}
+
+export const selectAdmin = (state) => {
+    return state.users.isAdmin
 }
 
 export default usersSlice.reducer
