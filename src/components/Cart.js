@@ -2,12 +2,17 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCartAsync, selectCart, selectCartTotal } from '../store/ordersSlice'
+import { selectUser, selectUsers } from "../store/usersSlice"
 
 const Cart = () => {
   const dispatch = useDispatch()
+  const id = window.localStorage.getItem("id")
+  console.log("object in loaclStorage:", id)
+  const currentUser = useSelector(selectUser)
+
 
   useEffect(() => {
-    dispatch(fetchCartAsync())
+    dispatch(fetchCartAsync(id))
   }, [dispatch])
 
   const cart = useSelector(selectCart)
@@ -30,14 +35,14 @@ const Cart = () => {
                     <div className='cartLiRight'>
                       <h4>Unit Price:{shoe.order_shoe.unitPrice}</h4>
                       <h5>Quantity:{shoe.order_shoe.quantity}</h5>
-                      
+
                     </div>
                   </li>
                 )
               })}
             </ul>
             <div className="cartCheckout">
-            <h2 >Total ${total}</h2><button id="order">Order</button>
+              <h2 >Total ${total}</h2><button id="order">Order</button>
             </div>
           </div>
         )
