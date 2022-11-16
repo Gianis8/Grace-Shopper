@@ -14,16 +14,19 @@ const Main = () => {
   return (
     <>
       <nav>
+        <span>
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/athletic'>Athletic</NavLink>
-        <NavLink to='/casual'> Casual</NavLink>
+        <NavLink to='/casual'>Casual</NavLink>
         {admin ? 
           <NavLink to='/admin'>Admin</NavLink>
           : null
         }
+        </span>
+        <span>
         <NavLink to='/login'>Login</NavLink>
-        <NavLink to='/cart'>Cart</NavLink>
-
+        <NavLink to='/cart'><span class="material-symbols-rounded">shopping_cart</span></NavLink>
+        </span>
       </nav>
       <Routes>
 

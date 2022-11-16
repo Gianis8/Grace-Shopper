@@ -25,7 +25,8 @@ const AuthForm = ({ name, displayName }) => {
 
   return (
     <>
-    <h1> Login Page</h1>
+    <h1>Login</h1>
+    <div className='loginForm'>
     <section>
     <div>
       <form onSubmit={handleSubmit} name={name}>
@@ -50,6 +51,7 @@ const AuthForm = ({ name, displayName }) => {
       </form>
     </div> 
     </section>
+    </div>
     </>
   );
 };
