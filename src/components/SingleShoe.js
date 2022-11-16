@@ -4,20 +4,25 @@ import { useDispatch,useSelector } from "react-redux";
 import { fetchSingleShoe, selectShoe } from "../store/shoesSlice";
 import { useParams } from "react-router-dom";
 import { addToCart } from "../store/ordersSlice";
+import { selectUser, getUser, fetchUserAsync } from "../store/usersSlice";
 
 const SingleShoe = ()=>{
     const dispatch = useDispatch()
     const { id } = useParams()
-    console.log("id returned from params:", id)
     const shoe = useSelector(selectShoe)
+
+    const currentUser = window.localStorage.getItem("user")
+    const loggedUser = JSON.parse(currentUser)
+    console.log(loggedUser)
+    
 
     useEffect(()=>{
         dispatch(fetchSingleShoe(id))
     },[dispatch])
 
     const handleClick = async (e) => {
-        console.log(shoe)
-        dispatch(addToCart(shoe))
+        console.log("evetn handler dispatch with:", shoe, loggedUser)
+        dispatch(addToCart({Shoe:shoe,user:loggedUser}))
     }
     return (
         <>

@@ -20,6 +20,12 @@ export const getUser = createAsyncThunk('getUser', async (username) => {
     }
 )
 
+export const fetchUserAsync = createAsyncThunk('fetchUserasync', async (id)=> {
+    const {data} = await axios.get(`/api/user/${id}`)
+    console.log( "returned from axios call:", data)
+    return data
+})
+
 export const usersSlice = createSlice({
     name: "users",
     initialState,
@@ -35,10 +41,14 @@ export const usersSlice = createSlice({
             state.loading = false
         })
         builder.addCase(getUser.fulfilled, (state, action) => {
-            console.log('User found', action.payload)
             state.user = action.payload
-            const jsn = JSON.stringify(state.user.id)
-            window.localStorage.setItem("id", jsn)
+            const jsn = JSON.stringify(action.payload)
+            console.log("data to send to localStorage:", jsn)
+            window.localStorage.setItem("user", jsn)
+        })
+        builder.addCase(fetchUserAsync.fulfilled, (state,action) => {
+            console.log('fetch user found')
+            state.user = action.payload
         })
     }
 
@@ -48,7 +58,6 @@ export const selectUsers = (state) => {
     return state.users.users
 }
 export const selectUser = (state) => {
-    console.log(state.users)
     return state.users.user
 }
 
