@@ -21,6 +21,9 @@ const AuthForm = ({ name, displayName }) => {
   };
 
   return (
+    <>
+    <h1> Login Page</h1>
+    <section>
     <div>
       <form onSubmit={handleSubmit} name={name}>
         <div>
@@ -37,10 +40,14 @@ const AuthForm = ({ name, displayName }) => {
         </div>
         <div>
           <button type="submit">{displayName}</button>
+         
         </div>
+        
         {error && <div> {error} </div>}
       </form>
-    </div>
+    </div> 
+    </section>
+    </>
   );
 };
 

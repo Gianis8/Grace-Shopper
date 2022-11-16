@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route, NavLink } from 'react-router-dom'
-import { HomePage, Athletic,Cart,Casual,Login, AppRoutes,Admin } from '../components'
+import { HomePage, Athletic, Cart, Casual, AppRoutes, Admin, AdminOrders, AdminUserData, S } from '../components'
 import SingleShoe from './SingleShoe'
 
 /* 
@@ -13,9 +13,9 @@ const Main = () => {
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/athletic'>Athletic</NavLink>
         <NavLink to='/casual'> Casual</NavLink>
-            <NavLink to='/login'>Login</NavLink>
-            <NavLink to='/cart'>Cart</NavLink>
-            <NavLink to='/admin'>Admin</NavLink>
+        <NavLink to='/admin'>Admin</NavLink>
+        <NavLink to='/login'>Login</NavLink>
+        <NavLink to='/cart'>Cart</NavLink>
       </nav>
       <Routes>
         <Route path='/' element={<HomePage />} ></Route>
@@ -23,12 +23,12 @@ const Main = () => {
         <Route path='/cart' element={<Cart />} ></Route>
         <Route path='/casual' element={<Casual />} ></Route>
         <Route path='/login' element={<AppRoutes />} ></Route>
-        <Route path='/shoe/:id' element={<SingleShoe/>} ></Route>
-        <Route path='/admin' element={<Admin/>} ></Route>
+        <Route path='/shoe/:id' element={<SingleShoe />} ></Route>
+        <Route path='/admin' element={<><Admin /> <AdminOrders /> <AdminUserData /></>} ></Route>
       </Routes>
-    
-    </> 
-   
+
+    </>
+
   )
 }
 
