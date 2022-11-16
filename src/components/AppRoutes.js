@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import AuthForm from './AuthForm'
-import Home from './HomePage'
+import Logout from './Logout';
 import { me } from '../store/authSlice'
 
 /**
@@ -23,8 +23,7 @@ const AppRoutes = () => {
     <div>
       {isLoggedIn ? (
         <Routes>
-          <Route path="/*" element={<Home />} />
-          <Route to="/home" element={<Home />} />
+          <Route path="/*" element={<Logout />} />
         </Routes>
       ) : (
         <Routes>

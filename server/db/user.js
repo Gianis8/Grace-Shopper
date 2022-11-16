@@ -2,10 +2,11 @@ const Sequelize = require("sequelize")
 const db = require("./database")
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
+require('dotenv').config();
 
 const SALT_ROUNDS = 5;
 
-const user = db.define("user", {
+const User = db.define("user", {
     username: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -33,27 +34,31 @@ const user = db.define("user", {
         validate: {
             isCreditCard:true
         }
+    },
+    isAdmin: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false
     }
 })
 
-module.exports = user
+// module.exports = User
 
 /**
  * instanceMethods
  */
- user.prototype.correctPassword = function(candidatePwd) {
+ User.prototype.correctPassword = function(candidatePwd) {
     //we need to compare the plain version to an encrypted version of the password
     return bcrypt.compare(candidatePwd, this.password);
   }
   
-  user.prototype.generateToken = function() {
+  User.prototype.generateToken = function() {
     return jwt.sign({id: this.id}, process.env.JWT)
   }
   
   /**
    * classMethods
    */
-  user.authenticate = async function({ username, password }){
+  User.authenticate = async function({ username, password }){
       const user = await this.findOne({where: { username }})
       if (!user || !(await user.correctPassword(password))) {
         const error = Error('Incorrect username/password');
@@ -63,10 +68,10 @@ module.exports = user
       return user.generateToken();
   };
   
-  user.findByToken = async function(token) {
+  User.findByToken = async function(token) {
     try {
       const {id} = await jwt.verify(token, process.env.JWT)
-      const user = user.findByPk(id)
+      const user = User.findByPk(id)
       if (!user) {
         throw 'nooo'
       }
@@ -88,6 +93,8 @@ module.exports = user
     }
   }
   
-  user.beforeCreate(hashPassword)
-  user.beforeUpdate(hashPassword)
-  user.beforeBulkCreate(users => Promise.all(users.map(hashPassword)))
+  User.beforeCreate(hashPassword)
+  User.beforeUpdate(hashPassword)
+  User.beforeBulkCreate(users => Promise.all(users.map(hashPassword)))
+
+  module.exports = User

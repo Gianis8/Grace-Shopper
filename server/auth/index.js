@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { user } = require('../db')
+const { user }  = require('../db')
 module.exports = router;
 
 router.post('/login', async (req, res, next) => {
@@ -30,3 +30,13 @@ router.get('/me', async (req, res, next) => {
     next(ex);
   }
 });
+
+router.get('/:username', async (req, res, next) => {
+  try {
+    const userName = req.params.username
+    const foundUser = await user.findOne({where: {username: userName}})
+    res.send(foundUser)
+  } catch (err) {
+    next(err)
+  }
+})

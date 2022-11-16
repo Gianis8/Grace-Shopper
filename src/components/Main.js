@@ -2,6 +2,7 @@ import React from 'react'
 import { Routes, Route, NavLink } from 'react-router-dom'
 import { HomePage, Athletic, Cart, Casual, AppRoutes, Admin, AdminOrders, AdminUserData, S } from '../components'
 import SingleShoe from './SingleShoe'
+import { selectUser } from '../store/usersSlice'
 
 /* 
     This is you entry point for your routes
