@@ -9,26 +9,30 @@ const Casual = () => {
 
   const shoes = useSelector(selectCasual)
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(fetchCasualShoesAsync())
-  },[dispatch])
+  }, [dispatch])
 
-  
-  console.log("casual shoes:",shoes)
+
+  console.log("casual shoes:", shoes)
   return (
     <>
-    <h1> Casual Page</h1>
-    <ul>
-      {shoes.map((shoe)=>{
-        return <li key={shoe.id}><Link to={`/shoe/${shoe.id}`}><h3>{shoe.name}</h3><img src={shoe.imageUrl}/></Link></li>
-      })}
-    </ul>
+      <h1>Shop Casual</h1>
+      <div className='shoeLayout'>
+        <ul>
+          {shoes.map((shoe) => {
+            return <li key={shoe.id}><Link to={`/shoe/${shoe.id}`}><h3>{shoe.name}</h3><img src={shoe.imageUrl} /></Link></li>
+          })}
+        </ul>
+      </div>
+      <div className='labels'>
       <label>Filtering : </label>
       <select id="filter">
         <option value="price">Price</option>
         <option value="brand">Brand</option>
         <option value="sizes">Sizes</option>
       </select>
+      </div>
     </>
   )
 }

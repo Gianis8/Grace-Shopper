@@ -16,9 +16,10 @@ export const fetchCartAsync = createAsyncThunk("fetchOrdersAsync", async(id)=>{
     return data
 })
 
-export const addToCart = createAsyncThunk('addToCart', async (shoe)=>{
-    console.log("axios post request add to cart")
-    const {data} = await axios.post
+export const addToCart = createAsyncThunk('addToCart', async(order)=>{
+    console.log("axios post request add to cart:", order)
+    const {data} = await axios.post("/api/orders/addToCart", order)
+    return data
 })
 
 export const fetchOrdersHistoryAsync = createAsyncThunk("fetchOrdersHistoryAsync", async(id)=>{

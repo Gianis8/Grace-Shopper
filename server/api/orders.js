@@ -29,6 +29,27 @@ router.get('/history/:id', async (req, res, next) => {
     }
 })
 
+router.post('/addToCart', async (req,res,next) => {
+    const addShoe = req.body.Shoe
+    const user = req.body.user
+
+
+    try{
+        const cart = await order.findOne({where: {
+            userId: user.id,
+            status: "cart"
+        }})
+        const product = await shoe.findOne({where:{
+            id:addShoe.id
+        }})
+        console.log(cart, product)
+        const added = await cart.addShoe(product, {through: {quantity:1, unitPrice: addShoe.price}})
+        res.send(added)
+    }catch(err){
+        next(err)
+    }
+})
+
 // POST for /api/orders/checkout
 router.post('/checkout', async (req, res, next) => {
     try {

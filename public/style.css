@@ -1,4 +1,3 @@
-
 * {
   box-sizing: border-box;
   font-family: arial, sans-serif;
@@ -20,6 +19,7 @@ nav {
   display: flex;
   height: 100px;
   padding: 10px;
+  justify-content: space-between;
 }
 
 main {
@@ -31,7 +31,8 @@ main {
 
 a {
   margin: 25px;
-  color: white
+  color: white;
+  text-decoration: none;
 }
 
 h1 {
@@ -39,7 +40,17 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: papyrus;
 }
+
+.brandName {
+  font-family: copperplate;
+}
+
+.ourMission {
+  font-size: 1.2em;
+}
+
 h3 {
   color: aliceblue;
 }
@@ -47,16 +58,80 @@ h3 {
 img {
   height: 190px;
   width: 180px;
-  margin-left: 3px;
 }
 
 ul {
   list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.singleShoe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.homePage {
+  margin: 15px;
+}
+
+.firstP {
+  margin-right: 15px;
+  float: left;
+}
+
+.secondP {
+  margin-left: 15px;
+  float: right;
+}
+
+.shoeLayout {
+  display: flex;
+  justify-content: center;
+}
+
+.buyShoes {
+  display: flex;
+  justify-content: end;
+}
+
+.secondDiv {
+  margin-top: 60px;
+}
+
+.logoutButtonDiv {
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+}
+
+.logoutButton {
+  border-radius: 6px;
+  background-color: darkviolet;
+  font-size: 20px;
+}
+
+.cartButton {
+  border-radius: 6px;
+  background-color: darkviolet;
+}
+
+.labels {
+  display: flex;
+  justify-content: center;
+}
+
+.loginForm {
+  display: flex;
+  justify-content: center;
 }
 
 .active {
   color: darkviolet;
 }
+
 footer {
   align-items: center;
   background-color: #333333;
@@ -66,25 +141,27 @@ footer {
   padding: 10px;
   bottom: 0;
 }
+
 section {
   border: 4px solid red;
-  height: 60vh;
-  width:60vh;
-  margin-left: 100px;
   justify-content: center;
   background-color: darkviolet;
-  color:black;
+  color: black;
 }
+
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
- color: black;
+  color: black;
+  margin: 15px;
 }
-input { 
+
+input {
   border: solid black;
   font-size: 20px;
   color: black;
+  margin: 5px;
 }
 
 .cart {
@@ -94,6 +171,7 @@ input {
   align-items: center;
   width: 100vw;
 }
+
 .cartList {
   display: flex;
   flex-direction: column;

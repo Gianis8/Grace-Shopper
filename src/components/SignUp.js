@@ -1,6 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { authenticate } from '../store/authSlice'
+import { CreateUserThunk, signUpUser } from '../store/SignUpSlice';
+import { useParams } from "react-router-dom";
+
 
 
 /**
@@ -10,14 +13,24 @@ import { authenticate } from '../store/authSlice'
 **/
 
 const SignUp = () => {
+  
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  
-
+  const [address, setAddress] = useState('')
+  const dispatch = useDispatch();
+  const user = useSelector(signUpUser)
   async function handleSubmit(evt) {
     evt.preventDefault()
-
+    console.log(username, email,password)
+dispatch(CreateUserThunk(
+  {
+    username,
+    email,
+    password,
+    isAdmin:false,
+  }
+))
   }
 
   return (
@@ -33,11 +46,13 @@ const SignUp = () => {
         <input type ='email' value={email} onChange={(evt) => setEmail(evt.target.value)} />
         <label htmlFor='password'>Password</label>
         <input type ='password' value={password} onChange={(evt) => setPassword(evt.target.value)} />
+        <label htmlFor='address'>Address</label>
+        <input  value={address} onChange={(evt) => setAddress(evt.target.value)} />
         <button type='Sign up'>Sign Up</button>
       </form>
       </section>
       </div>
-      
+
     </>
   )
 }

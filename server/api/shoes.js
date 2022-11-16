@@ -9,6 +9,13 @@ router.get('/athletic', async (req, res, next) => {
         next(err)
     }
 })
+router.post('/', async (req, res, next) => {
+    try {
+        res.send(await shoe.create(req.body))
+    } catch (err) {
+        next(err)
+    }
+})
 
 // GET for /api/shoes/casual
 router.get('/casual', async (req, res, next) => {

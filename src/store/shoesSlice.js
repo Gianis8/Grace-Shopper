@@ -21,7 +21,6 @@ export const fetchCasualShoesAsync = createAsyncThunk("fetchCasualShoesAsync", a
 })
 
 export const fetchSingleShoe = createAsyncThunk("fetchSingleShoe", async (id)=> {
-    console.log("firing axios call")
     const { data } = await axios.get(`/api/shoes/${id}`)
     console.log("single shoe returned:", data)
     return data
