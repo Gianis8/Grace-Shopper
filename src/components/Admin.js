@@ -24,6 +24,7 @@ const Admin = () => {
       <h1> Admin Page</h1>
       <div>
 <section>
+<h1> Inventory</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor='name'>Name</label>
         <input value={name} onChange={(evt) => setName(evt.target.value)} />
