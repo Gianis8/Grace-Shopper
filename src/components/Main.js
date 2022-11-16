@@ -1,16 +1,32 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Routes, Route, NavLink } from 'react-router-dom'
 import { HomePage, Athletic, Cart, Casual, AppRoutes, Admin, AdminOrders, AdminUserData, SignUp } from '../components'
 import SingleShoe from './SingleShoe'
-import { selectUser, selectAdmin } from '../store/usersSlice'
-import { useSelector } from 'react-redux'
+import { selectUser, selectAdmin, setAdmin } from '../store/usersSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 /* 
     This is you entry point for your routes
 */
+
+
 const Main = () => {
-  const admin = useSelector(selectAdmin)
-  const user = useSelector(selectUser)
+  
+const dispatch = useDispatch()
+  function checkAdmin(){
+    const userAdmin = window.localStorage.getItem('user')
+    const admin = JSON.parse(userAdmin)
+    if(admin.isAdmin) {
+      dispatch(setAdmin())
+    }
+  }
+  
+  useEffect(()=>{
+    checkAdmin()
+  })
+
+  const isAdministrator = useSelector(selectAdmin)
+  console.log(isAdministrator)
   return (
     <>
       <nav>
@@ -18,7 +34,7 @@ const Main = () => {
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/athletic'>Athletic</NavLink>
         <NavLink to='/casual'>Casual</NavLink>
-        {admin ? 
+        {isAdministrator ? 
           <NavLink to='/admin'>Admin</NavLink>
           : null
         }

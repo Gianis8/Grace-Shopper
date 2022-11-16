@@ -30,7 +30,12 @@ export const fetchUserAsync = createAsyncThunk('fetchUserasync', async (id)=> {
 export const usersSlice = createSlice({
     name: "users",
     initialState,
-    reducers: {},
+    reducers: {
+        setAdmin(state) {
+            console.log("setting admin value")
+            state.isAdmin = true
+        }
+    },
     extraReducers:(builder)=>{
         builder.addCase(fetchUsersAsync.pending, (state,action)=> {
             console.log("Users are pending")
@@ -65,5 +70,5 @@ export const selectUser = (state) => {
 export const selectAdmin = (state) => {
     return state.users.isAdmin
 }
-
+export const {setAdmin} = usersSlice.actions
 export default usersSlice.reducer
