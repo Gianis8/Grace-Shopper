@@ -25,7 +25,7 @@ const SingleShoe = ()=>{
         dispatch(addToCart({Shoe:shoe,user:loggedUser}))
     }
     return (
-        <>
+        <div className="singleShoe">
         <h1>{shoe.name}</h1>
         <img src={shoe.imageUrl}/>
         <h3>{shoe.brand}</h3>
@@ -45,9 +45,9 @@ const SingleShoe = ()=>{
         </select>
         <h3>Color: {shoe.color}</h3>
         <p>{shoe.description}</p>
-        <button onClick={handleClick}>Add to Cart</button>
+        <button className="cartButton" onClick={handleClick}>Add to Cart</button>
 
-        </>
+        </div>
     )
 }
 
