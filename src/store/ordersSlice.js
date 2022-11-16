@@ -21,6 +21,13 @@ export const addToCart = createAsyncThunk('addToCart', async (shoe)=>{
     const {data} = await axios.post
 })
 
+export const fetchOrdersHistoryAsync = createAsyncThunk("fetchOrdersHistoryAsync", async(id)=>{
+    console.log("axios call for users order history", id)
+    const { data } = await axios.get(`/api/orders/history/${id}`)
+    console.log("fetch history:",data)
+    return data
+})
+
 export const ordersSlice = createSlice({
     name: "orders",
     initialState,
@@ -31,10 +38,14 @@ export const ordersSlice = createSlice({
             state.loading = true
         })
         builder.addCase(fetchCartAsync.fulfilled, (state, action)=>{
-            console.log('Orders aqquired!')
+            console.log('Orders aquired!')
             state.cart = action.payload
-            state.loading = false
-           
+            state.loading = false 
+        })
+        builder.addCase(fetchOrdersHisotryAsync.fulfilled, (state, action)=>{
+            console.log('History aquired!')
+            state.cart = action.payload
+            state.loading = false 
         })
     }
 

@@ -29,6 +29,13 @@ const User = db.define("user", {
             notEmpty: true,
         }
     },
+    address: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      }
+    },
     card: {
         type: Sequelize.STRING,
         validate: {
