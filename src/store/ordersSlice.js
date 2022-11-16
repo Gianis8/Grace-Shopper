@@ -43,7 +43,7 @@ export const ordersSlice = createSlice({
             state.cart = action.payload
             state.loading = false 
         })
-        builder.addCase(fetchOrdersHisotryAsync.fulfilled, (state, action)=>{
+        builder.addCase(fetchOrdersHistoryAsync.fulfilled, (state, action)=>{
             console.log('History aquired!')
             state.cart = action.payload
             state.loading = false 
