@@ -52,7 +52,7 @@ dispatch(CreateUserThunk(
       </form>
       </section>
       </div>
-      
+
     </>
   )
 }

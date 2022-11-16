@@ -6,13 +6,13 @@ import { selectUser, selectUsers } from "../store/usersSlice"
 
 const Cart = () => {
   const dispatch = useDispatch()
-  const id = window.localStorage.getItem("id")
-  console.log("object in loaclStorage:", id)
-  const currentUser = useSelector(selectUser)
+  const user = window.localStorage.getItem("user")
+  const foundUser = JSON.parse(user)
+  console.log(foundUser)
 
 
   useEffect(() => {
-    dispatch(fetchCartAsync(id))
+    dispatch(fetchCartAsync(foundUser.id))
   }, [dispatch])
 
   const cart = useSelector(selectCart)
