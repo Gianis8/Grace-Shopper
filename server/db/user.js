@@ -1,4 +1,5 @@
-const Sequelize = require("sequelize")
+const Sequelize = require("sequelize");
+// require('sequelize-isunique-validator')(Sequelize);
 const db = require("./database")
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
@@ -17,9 +18,10 @@ const User = db.define("user", {
     email: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
         validate: {
             notEmpty: true,
-            isEmail: true
+            isEmail: true,
         }
     },
     password: {
