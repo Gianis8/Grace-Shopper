@@ -9,15 +9,15 @@ const initialState = {
     loading: true
 }
 
-export const fetchCartAsync = createAsyncThunk("fetchOrdersAsync", async()=>{
-    console.log("firing axios call")
-    const { data } = await axios.get('/api/orders/cart')
+export const fetchCartAsync = createAsyncThunk("fetchOrdersAsync", async(id)=>{
+    console.log("firing axios call with id:", id)
+    const { data } = await axios.get(`/api/orders/cart/${id}`)
     console.log("fetch cart:",data)
     return data
 })
 
 export const addToCart = createAsyncThunk('addToCart', async (shoe)=>{
-    console.log("axios post request")
+    console.log("axios post request add to cart")
     const {data} = await axios.post
 })
 

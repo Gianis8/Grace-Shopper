@@ -18,7 +18,7 @@ export const getUser = createAsyncThunk('getUser', async (username) => {
       const { data } = await axios.get(`/auth/${username}`)
       return data
     }
-  )
+)
 
 export const usersSlice = createSlice({
     name: "users",
@@ -37,6 +37,8 @@ export const usersSlice = createSlice({
         builder.addCase(getUser.fulfilled, (state, action) => {
             console.log('User found', action.payload)
             state.user = action.payload
+            const jsn = JSON.stringify(state.user.id)
+            window.localStorage.setItem("id", jsn)
         })
     }
 
@@ -46,6 +48,7 @@ export const selectUsers = (state) => {
     return state.users.users
 }
 export const selectUser = (state) => {
+    console.log(state.users)
     return state.users.user
 }
 
