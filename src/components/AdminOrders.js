@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { authenticate } from '../store/authSlice'
-
+import { fetchCartAsync, selectCart } from '../store/ordersSlice';
 /**
   The AuthForm component can be used for Login or Sign Up.
   Props for Login: name="login", displayName="Login"
@@ -9,8 +9,13 @@ import { authenticate } from '../store/authSlice'
 **/
 
 const AdminOrders = () => {
-  const [order, setOrder] = useState('')
-
+ 
+  const dispatch = useDispatch()
+  const orders = useSelector(selectCart)
+  console.log(orders)
+  useEffect(() => {
+    dispatch(fetchCartAsync())
+  }, [dispatch])
 
   async function handleSubmit(evt) {
     evt.preventDefault()
@@ -20,9 +25,13 @@ const AdminOrders = () => {
   return (
     <>
       <h1> User Orders</h1>
-      <div>
-<section>
-      <form onSubmit={handleSubmit}>
+<section> 
+      <ul>{orders.map((order) => {
+        return <li key={order.id}><h3>{order.cost}</h3> <p>{order.shippingAddress}</p></li>
+      })}</ul>
+</section>
+ {/* <div> */}
+      {/* <form onSubmit={handleSubmit}>
         <h3>UserName</h3>
         <label htmlFor='order1'>Order1</label>
         <input type ='number' value={order} onChange={(evt) => setOrder(+evt.target.value)} />
@@ -34,9 +43,9 @@ const AdminOrders = () => {
         <input type ='number' value={order} onChange={(evt) => setOrder(+evt.target.value)} />
         <label htmlFor='order5'>Order5</label>
         <input type ='number' value={order} onChange={(evt) => setOrder(+evt.target.value)} />
-      </form>
-      </section>
-      </div>
+      </form> */}
+     
+      {/* </div> */}
       
     </>
   )
