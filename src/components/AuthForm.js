@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { authenticate } from '../store/authSlice'
 import { getUser } from '../store/usersSlice';
+import { Link } from 'react-router-dom'
 
 /**
   The AuthForm component can be used for Login or Sign Up.
@@ -44,7 +45,7 @@ const AuthForm = ({ name, displayName }) => {
           <button type="submit">{displayName}</button>
          
         </div>
-        
+        <Link to='/signup'>SignUp</Link>
         {error && <div> {error} </div>}
       </form>
     </div> 

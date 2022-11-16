@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route, NavLink } from 'react-router-dom'
-import { HomePage, Athletic, Cart, Casual, AppRoutes, Admin, AdminOrders, AdminUserData, S } from '../components'
+import { HomePage, Athletic, Cart, Casual, AppRoutes, Admin, AdminOrders, AdminUserData, SignUp } from '../components'
 import SingleShoe from './SingleShoe'
 import { selectUser } from '../store/usersSlice'
 
@@ -17,8 +17,10 @@ const Main = () => {
         <NavLink to='/admin'>Admin</NavLink>
         <NavLink to='/login'>Login</NavLink>
         <NavLink to='/cart'>Cart</NavLink>
+        
       </nav>
       <Routes>
+
         <Route path='/' element={<HomePage />} ></Route>
         <Route path='/athletic' element={<Athletic />} ></Route>
         <Route path='/cart' element={<Cart />} ></Route>
@@ -26,6 +28,7 @@ const Main = () => {
         <Route path='/login' element={<AppRoutes />} ></Route>
         <Route path='/shoe/:id' element={<SingleShoe />} ></Route>
         <Route path='/admin' element={<><Admin /> <AdminOrders /> <AdminUserData /></>} ></Route>
+        <Route path='/signup' element={<SignUp />} ></Route>
       </Routes>
 
     </>

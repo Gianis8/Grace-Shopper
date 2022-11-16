@@ -8,6 +8,7 @@ import { authenticate } from '../store/authSlice'
 **/
 
 const Admin = () => {
+  const dispatch = useDispatch()
   const [name, setName] = useState('')
   const [size, setSize] = useState('')
   const [price, setPrice] = useState('')

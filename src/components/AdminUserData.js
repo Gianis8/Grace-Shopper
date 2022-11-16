@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { authenticate } from '../store/authSlice'
+import { selectUser, selectUsers } from '../store/usersSlice';
+import { fetchUsersAsync } from '../store/usersSlice';
 
 /**
   The AuthForm component can be used for Login or Sign Up.
@@ -9,35 +11,25 @@ import { authenticate } from '../store/authSlice'
 **/
 
 const AdminUserData = () => {
-  const [name, setName] = useState('')
-  const [address, setAddress] = useState('')
-  const [order, setOrders] = useState('')
-  const [phone, setPhone] = useState('')
+  const dispatch = useDispatch()
+  const users = useSelector(selectUsers)
+  console.log(users)
+  useEffect(() => {
+    dispatch(fetchUsersAsync())
+  }, [dispatch])
 
   async function handleSubmit(evt) {
     evt.preventDefault()
-
   }
 
   return (
-    <>
+    <> 
+    <section>
       <h1> User Data</h1>
-      <div>
-<section>
-      <form onSubmit={handleSubmit}>
-        <h3>User Data</h3>
-        <label htmlFor='name'>Name</label>
-        <input value={name} onChange={(evt) => setName(evt.target.value)} />
-        <label htmlFor='address'>Address</label>
-        <input  value={address} onChange={(evt) => setAddress(evt.target.value)} />
-        <label htmlFor='order'>Orders</label>
-        <input  value={order} onChange={(evt) => setOrders(+evt.target.value)} />
-        <label htmlFor='color'>Phone Number</label>
-        <input type = 'number'value={phone} onChange={(evt) => setPhone(+evt.target.value)} />
-      </form>
+      <ul>{users.map((user) => {
+        return <li key={user.id}><h3>{user.username}</h3>{user.email}</li>
+      })}</ul>
       </section>
-      </div>
-      
     </>
   )
 }
