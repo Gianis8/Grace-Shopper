@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { fetchSingleShoe, selectShoe } from "../store/shoesSlice";
 import { useParams } from "react-router-dom";
+import { addToCart } from "../store/ordersSlice";
 
 const SingleShoe = ()=>{
     const dispatch = useDispatch()
@@ -14,8 +15,9 @@ const SingleShoe = ()=>{
         dispatch(fetchSingleShoe(id))
     },[dispatch])
 
-    const handleClick = async () => {
-        dispatch()
+    const handleClick = async (e) => {
+        console.log(shoe)
+        dispatch(addToCart(shoe))
     }
     return (
         <>
@@ -38,7 +40,7 @@ const SingleShoe = ()=>{
         </select>
         <h3>Color: {shoe.color}</h3>
         <p>{shoe.description}</p>
-        <button onClick={handleClick}></button>
+        <button onClick={handleClick}>Add to Cart</button>
 
         </>
     )
