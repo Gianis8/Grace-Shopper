@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 const initialState = {
+    allShoes: [],
     athletic: [],
     casual: [],
     shoe: {},
@@ -31,10 +32,16 @@ export const AddShoes = createAsyncThunk("AddShoes ", async (shoe)=>{
     return data
 })
 
-export const deleteSingleShoe = createAsyncThunk("deleteSingleShoe", async (id) => {
-    const { data } = await axios.delete(`api/admin/${id}`)
-    console.log("deleted shoe:", data)
+export const fetchAllShoes = createAsyncThunk("fetchAllShoes", async ()=> {
+    const { data } = await axios.get(`/api/shoes`)
+    console.log("all shoes returned:", data)
     return data
+})
+
+export const deleteSingleShoe = createAsyncThunk("deleteSingleShoe", async (id) => {
+    const { data } = await axios.delete(`/api/admin/${id}`)
+    console.log("deleted shoe:", data)
+    return 
 })
 
 
@@ -71,9 +78,19 @@ export const shoesSlice = createSlice({
             state.loading = false
             state.shoe = action.payload
         })
+        builder.addCase(fetchAllShoes.fulfilled, (state,action)=>{
+            console.log("all shoes found")
+            state.loading = false
+            state.allShoes = action.payload
+        })
+        builder.addCase(deleteSingleShoe.fulfilled, (state,action)=>{
+            console.log("Shoe deleted")
+            state.shoe.splice(action.payload, 1)
+        })
         builder.addCase(AddShoes.fulfilled, (state,action)=>{
             console.log("shoe added",action.payload)
             state.shoe = action.payload
+
         })
     }
 })
@@ -88,6 +105,10 @@ export const selectCasual = (state) => {
 
 export const selectShoe = (state) =>{
     return state.shoes.shoe
+}
+
+export const selectAllShoes = (state) => {
+    return state.shoes.allShoes
 }
 
 export default shoesSlice.reducer
