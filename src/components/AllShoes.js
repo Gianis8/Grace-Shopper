@@ -8,17 +8,19 @@ const AllShoes = () => {
     const dispatch = useDispatch()
     const shoes = useSelector(selectAllShoes)
 
-    console.log("########", shoes)
+    // console.log("########", shoes)
 
     useEffect(()=>{
         dispatch(fetchAllShoes())
-    },[dispatch])
+    }, [])
 
 
-    // const handleDelete = async (e) => {
-    //     console.log("event handler dispatch delete shoe:", shoes)
-    //     dispatch(deleteSingleShoe)
-    // }
+    const handleDelete = async (id) => {
+        console.log("event handler dispatch delete shoe:", id)
+        dispatch(deleteSingleShoe(id))
+        dispatch(fetchAllShoes())
+    }
+    
     return (
         <div className="allShoes">
         <ul>
@@ -29,7 +31,7 @@ const AllShoes = () => {
                     <h3>{shoe.name}</h3>
                     <h3>{shoe.type}</h3>
                     <img src={shoe.imageUrl} /></Link>
-                    {/* <button className="deleteButton" onClick={handleDelete}>Remove from inventory</button> */}
+                    <button className="deleteButton" onClick={(e)=>{e.preventDefault; handleDelete(shoe.id)}}>Remove from inventory</button>
             </li>
           })}
         </ul> 

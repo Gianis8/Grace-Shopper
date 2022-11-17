@@ -26,6 +26,11 @@ export const fetchSingleShoe = createAsyncThunk("fetchSingleShoe", async (id)=> 
     console.log("single shoe returned:", data)
     return data
 })
+export const AddShoes = createAsyncThunk("AddShoes ", async (shoe)=>{
+    const { data } = await axios.post('/api/shoes',shoe)
+    console.log("firing axios call to add shoe", data)
+    return data
+})
 
 export const fetchAllShoes = createAsyncThunk("fetchAllShoes", async ()=> {
     const { data } = await axios.get(`/api/shoes`)
@@ -34,9 +39,9 @@ export const fetchAllShoes = createAsyncThunk("fetchAllShoes", async ()=> {
 })
 
 export const deleteSingleShoe = createAsyncThunk("deleteSingleShoe", async (id) => {
-    const { data } = await axios.delete(`api/admin/${id}`)
+    const { data } = await axios.delete(`/api/admin/${id}`)
     console.log("deleted shoe:", data)
-    return data
+    return 
 })
 
 
@@ -76,11 +81,16 @@ export const shoesSlice = createSlice({
         builder.addCase(fetchAllShoes.fulfilled, (state,action)=>{
             console.log("all shoes found")
             state.loading = false
-            state.shoe = action.payload
+            state.allShoes = action.payload
         })
         builder.addCase(deleteSingleShoe.fulfilled, (state,action)=>{
             console.log("Shoe deleted")
             state.shoe.splice(action.payload, 1)
+        })
+        builder.addCase(AddShoes.fulfilled, (state,action)=>{
+            console.log("shoe added",action.payload)
+            state.shoe = action.payload
+
         })
     }
 })

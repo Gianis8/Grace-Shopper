@@ -22,7 +22,7 @@ const SignUp = () => {
   const user = useSelector(signUpUser)
   async function handleSubmit(evt) {
     evt.preventDefault()
-    console.log(username, email,password)
+    
 dispatch(CreateUserThunk(
   {
     username,
