@@ -26,6 +26,12 @@ export const fetchSingleShoe = createAsyncThunk("fetchSingleShoe", async (id)=> 
     return data
 })
 
+export const deleteSingleShoe = createAsyncThunk("deleteSingleShoe", async (id) => {
+    const { data } = await axios.delete(`api/admin/${id}`)
+    console.log("deleted shoe:", data)
+    return data
+})
+
 
 
 export const shoesSlice = createSlice({
@@ -59,6 +65,10 @@ export const shoesSlice = createSlice({
             console.log("single shoe found")
             state.loading = false
             state.shoe = action.payload
+        })
+        builder.addCase(deleteSingleShoe.fulfilled, (state,action)=>{
+            console.log("Shoe deleted")
+            state.shoe.splice(action.payload, 1)
         })
     }
 })
