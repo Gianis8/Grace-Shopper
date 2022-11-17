@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { fetchSingleShoe, selectShoe } from "../store/shoesSlice";
 import { useParams } from "react-router-dom";
-import { addToCart } from "../store/ordersSlice";
+import { addToCart, fetchCartAsync, selectCart } from "../store/ordersSlice";
 import { selectUser, getUser, fetchUserAsync } from "../store/usersSlice";
 
 const SingleShoe = ()=>{
@@ -14,15 +14,20 @@ const SingleShoe = ()=>{
     const currentUser = window.localStorage.getItem("user")
     const loggedUser = JSON.parse(currentUser)
     console.log(loggedUser)
+
     
 
     useEffect(()=>{
         dispatch(fetchSingleShoe(id))
+        dispatch(fetchCartAsync(loggedUser.id))
     },[dispatch])
+
+    const cart = useSelector(selectCart)
+    const cartId = cart[0]
 
     const handleClick = async (e) => {
         console.log("evetn handler dispatch with:", shoe, loggedUser)
-        dispatch(addToCart({Shoe:shoe,user:loggedUser}))
+        dispatch(addToCart({Shoe:shoe,user:loggedUser,orderId:cartId.id}))
     }
     return (
         <div className="singleShoe">

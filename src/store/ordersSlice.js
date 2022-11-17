@@ -22,6 +22,17 @@ export const addToCart = createAsyncThunk('addToCart', async(order)=>{
     return data
 })
 
+export const removeFromCart = createAsyncThunk("removeFromCart", async (remove)=>{
+    console.log(remove)
+    const { data } = await axios.delete("/api/orders/remove", {data: remove})
+    return data
+})
+
+export const updateQuant = createAsyncThunk("updateQuant", async (obj)=>{
+    console.log("updating quantity with:", obj)
+    const {data} = await axios.put("/api/orders/quantity", obj)
+})
+
 export const ordersSlice = createSlice({
     name: "orders",
     initialState,
