@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { authenticate } from '../store/authSlice'
+import { AddShoes} from '../store/shoesSlice';
+
 /**
   The AuthForm component can be used for Login or Sign Up.
   Props for Login: name="login", displayName="Login"
@@ -12,10 +14,20 @@ const Admin = () => {
   const [name, setName] = useState('')
   const [size, setSize] = useState('')
   const [price, setPrice] = useState('')
+  const [brand, setBrand] = useState('')
+  const [type, setType] = useState('')
   const [color, setColor] = useState('')
 
   async function handleSubmit(evt) {
     evt.preventDefault()
+dispatch(AddShoes({
+  name,
+  size,
+  price,
+  brand,
+  type,
+  color,
+}))
 
   }
 
@@ -30,6 +42,10 @@ const Admin = () => {
         <input value={name} onChange={(evt) => setName(evt.target.value)} />
         <label htmlFor='size'>Size</label>
         <input type ='number' value={size} onChange={(evt) => setSize(+evt.target.value)} />
+        <label htmlFor='brand'>Brand</label>
+        <input value={brand} onChange={(evt) => setBrand(evt.target.value)} />
+        <label htmlFor='type'>Type </label>
+        <input value={type} onChange={(evt) => setType(evt.target.value)} />
         <label htmlFor='price'>Price</label>
         <input type ='number' value={price} onChange={(evt) => setPrice(+evt.target.value)} />
         <label htmlFor='color'>Color</label>

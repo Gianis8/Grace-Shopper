@@ -25,6 +25,11 @@ export const fetchSingleShoe = createAsyncThunk("fetchSingleShoe", async (id)=> 
     console.log("single shoe returned:", data)
     return data
 })
+export const AddShoes = createAsyncThunk("AddShoes ", async (shoe)=>{
+    const { data } = await axios.post('/api/shoes',shoe)
+    console.log("firing axios call to add shoe", data)
+    return data
+})
 
 export const deleteSingleShoe = createAsyncThunk("deleteSingleShoe", async (id) => {
     const { data } = await axios.delete(`api/admin/${id}`)
@@ -66,9 +71,9 @@ export const shoesSlice = createSlice({
             state.loading = false
             state.shoe = action.payload
         })
-        builder.addCase(deleteSingleShoe.fulfilled, (state,action)=>{
-            console.log("Shoe deleted")
-            state.shoe.splice(action.payload, 1)
+        builder.addCase(AddShoes.fulfilled, (state,action)=>{
+            console.log("shoe added",action.payload)
+            state.shoe = action.payload
         })
     }
 })
