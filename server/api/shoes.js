@@ -11,8 +11,12 @@ router.get('/athletic', async (req, res, next) => {
 })
 router.post('/', async (req, res, next) => {
     try {
-        res.send(await shoe.create(req.body))
+        const body= req.body
+        console.log(body)
+        const added= await shoe.create(body)
+        // res.send(added)
     } catch (err) {
+        console.log(err)
         next(err)
     }
 })
