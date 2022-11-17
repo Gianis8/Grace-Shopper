@@ -31,6 +31,12 @@ export const AddShoes = createAsyncThunk("AddShoes ", async (shoe)=>{
     return data
 })
 
+export const deleteSingleShoe = createAsyncThunk("deleteSingleShoe", async (id) => {
+    const { data } = await axios.delete(`api/admin/${id}`)
+    console.log("deleted shoe:", data)
+    return data
+})
+
 
 
 export const shoesSlice = createSlice({
