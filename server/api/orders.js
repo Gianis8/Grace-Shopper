@@ -20,7 +20,8 @@ router.get('/cart/:id', async (req, res, next) => {
 })
 
 // GET for /api/orders/history
-router.get('/history', async (req, res, next) => {
+router.get('/history/:id', async (req, res, next) => {
+    const id = req.params.id
     try {
         res.send(await order.findAll({ where: { userId: id, status: 'complete' }, include: [shoe] }))
     } catch (err) {

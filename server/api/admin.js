@@ -25,8 +25,9 @@ router.put('/:id', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
     try {
         const { id } = req.params
+        console.log(id, "$$$$$$$")
         const deleteShoe = await shoe.findByPk(id)
-        res.send(await deleteShoe.destroy())
+        await deleteShoe.destroy({where: {shoeId : id}})
     } catch (err) {
         next(err)
     }

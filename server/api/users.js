@@ -33,11 +33,15 @@ router.put('/:id', async (req, res, next) => {
 
 // POST for /api/users
 router.post('/', async (req, res, next) => {
+    const newUser = await user.create(req.body)
+    console.log(newUser)
     try {
         res.send(await user.create(req.body))
+        
     } catch (err) {
         next(err)
     }
 })
+
 
 module.exports = router

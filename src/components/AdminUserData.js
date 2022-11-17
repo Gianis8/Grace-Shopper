@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { authenticate } from '../store/authSlice'
 import { selectUser, selectUsers } from '../store/usersSlice';
 import { fetchUsersAsync } from '../store/usersSlice';
-
+import { Link } from 'react-router-dom';
 /**
   The AuthForm component can be used for Login or Sign Up.
   Props for Login: name="login", displayName="Login"
@@ -23,13 +23,13 @@ const AdminUserData = () => {
   }
 
   return (
-    <> 
-    <section>
+    <>
+     <section>
       <h1> User Data</h1>
       <ul>{users.map((user) => {
-        return <li key={user.id}><h3>{user.username}</h3>{user.email}</li>
+        return <li key={user.id}><Link to={`/orders`}><h3>{user.username}</h3></Link>{user.email}</li>
       })}</ul>
-      </section>
+       </section>
     </>
   )
 }
