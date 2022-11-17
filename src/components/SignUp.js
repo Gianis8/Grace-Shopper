@@ -35,8 +35,8 @@ dispatch(CreateUserThunk(
 
   return (
     <>
-      <h1>SignUp Page</h1>
-      <div>
+      <h1>SignUp</h1>
+      <div className='loginForm'>
 <section>
       <form onSubmit={handleSubmit}>
         <h3>SignUp</h3>
