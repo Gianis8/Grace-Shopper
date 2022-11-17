@@ -1,6 +1,15 @@
 const router = require('express').Router()
 const { shoe } = require('../db')
 
+//Get all shoes
+router.get('/', async (req, res, next) => {
+    try {
+        res.send(await shoe.findAll())
+    } catch (err) {
+        next(err)
+    }
+})
+
 // GET for /api/shoes/athletic
 router.get('/athletic', async (req, res, next) => {
     try {

@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { authenticate } from '../store/authSlice'
+import { AllShoes } from './index'   
+import { Route, Routes } from 'react-router-dom';
 /**
   The AuthForm component can be used for Login or Sign Up.
   Props for Login: name="login", displayName="Login"
@@ -36,6 +38,10 @@ const Admin = () => {
         <input value={color} onChange={(evt) => setColor(evt.target.value)} />
         <button type='add-inventory'>Add to inventory</button>
       </form>
+      <Routes>
+        <Route path="/" element={<AllShoes />}>  
+        </Route>
+      </Routes>
       </section>
       </div>
       
