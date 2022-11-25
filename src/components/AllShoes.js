@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllShoes, selectAllShoes, deleteSingleShoe } from "../store/shoesSlice";
 import { Link } from "react-router-dom";
+import { fetchCrimes, selectCrimes } from "../store/ordersSlice";
 
 const AllShoes = () => {
     const dispatch = useDispatch()
@@ -11,9 +12,11 @@ const AllShoes = () => {
     // console.log("########", shoes)
 
     useEffect(()=>{
+        
         dispatch(fetchAllShoes())
     }, [])
 
+    
 
     const handleDelete = async (id) => {
         console.log("event handler dispatch delete shoe:", id)

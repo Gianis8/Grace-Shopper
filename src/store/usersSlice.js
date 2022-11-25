@@ -32,7 +32,7 @@ export const usersSlice = createSlice({
     initialState,
     reducers: {
         setAdmin(state) {
-            console.log("setting admin value")
+            
             state.isAdmin = true
         }
     },

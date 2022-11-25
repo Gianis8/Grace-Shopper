@@ -14,6 +14,7 @@ const Athletic = () => {
     dispatch(fetchAthleticShoesAsync())
   }, [dispatch])
 
+
   return (
     <>
       <h1>Shop Athletic</h1>

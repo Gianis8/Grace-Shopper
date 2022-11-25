@@ -11,8 +11,8 @@ import { useDispatch, useSelector } from 'react-redux'
 
 
 const Main = () => {
+  const dispatch = useDispatch()
   
-const dispatch = useDispatch()
   function checkAdmin(){
     const userAdmin = window.localStorage.getItem('user')
     const admin = JSON.parse(userAdmin)
@@ -26,7 +26,6 @@ const dispatch = useDispatch()
   })
 
   const isAdministrator = useSelector(selectAdmin)
-  console.log(isAdministrator)
   return (
     <>
       <nav>
@@ -41,7 +40,7 @@ const dispatch = useDispatch()
         </span>
         <span>
         <NavLink to='/login'>Login</NavLink>
-        <NavLink to='/cart'><span class="material-symbols-rounded">shopping_cart</span></NavLink>
+        <NavLink to='/cart'><span className="material-symbols-rounded">shopping_cart</span></NavLink>
         </span>
       </nav>
       <Routes>

@@ -1,15 +1,16 @@
 import React from 'react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchCartAsync, selectCart, selectCartTotal, removeFromCart, updateQuant } from '../store/ordersSlice'
-import { selectUser, selectUsers } from "../store/usersSlice"
+import { fetchCartAsync, selectCart, selectCartTotal, removeFromCart, updateQuant, selectToggle } from '../store/ordersSlice'
+
+
 
 const Cart = () => {
   const dispatch = useDispatch()
+  const toggle = useSelector(selectToggle)
   const user = window.localStorage.getItem("user")
   const foundUser = JSON.parse(user)
-  console.log(foundUser)
-
+  
 
   useEffect(() => {
     dispatch(fetchCartAsync(foundUser.id))
@@ -29,9 +30,12 @@ const Cart = () => {
     dispatch(updateQuant(obj))
     dispatch(fetchCartAsync(foundUser.id))
   }
+  
 
   let cart = useSelector(selectCart)
   const total = useSelector(selectCartTotal)
+
+  console.log(cart)
 
   return (
     <>
@@ -55,7 +59,7 @@ const Cart = () => {
                           e.preventDefault();
                           const plus = e.target.value
                           handleQuant(shoe.id, order.id, plus)
-                        }}>+</button><button value={0} onClick={(e) => {
+                        }}>+</button><span value={toggle}></span><button value={0} onClick={(e) => {
                           e.preventDefault();
                           const minus = e.target.value
                           handleQuant(shoe.id, order.id, minus)
