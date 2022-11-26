@@ -70,5 +70,8 @@ export const selectUser = (state) => {
 export const selectAdmin = (state) => {
     return state.users.isAdmin
 }
-export const {setAdmin} = usersSlice.actions
+
+export const { setAdmin } = usersSlice.actions
+
+
 export default usersSlice.reducer

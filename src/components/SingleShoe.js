@@ -4,7 +4,7 @@ import { useDispatch,useSelector } from "react-redux";
 import { fetchSingleShoe, selectShoe } from "../store/shoesSlice";
 import { useParams } from "react-router-dom";
 import { addToCart, fetchCartAsync, selectCart } from "../store/ordersSlice";
-import { selectUser, getUser, fetchUserAsync } from "../store/usersSlice";
+import { Button } from "react-bootstrap"
 
 const SingleShoe = ()=>{
     const dispatch = useDispatch()
@@ -50,8 +50,7 @@ const SingleShoe = ()=>{
         </select>
         <h3>Color: {shoe.color}</h3>
         <p>{shoe.description}</p>
-        <button className="cartButton" onClick={handleClick}>Add to Cart</button>
-
+        <Button onClick={handleClick}>Add to Cart</Button>
         </div>
     )
 }

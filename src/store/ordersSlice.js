@@ -43,16 +43,13 @@ export const ordersSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(fetchCartAsync.pending, (state, action) => {
-
             state.loading = true
         })
         builder.addCase(fetchCartAsync.fulfilled, (state, action) => {
-
             state.cart = action.payload
             state.loading = false
         })
         builder.addCase(fetchOrdersHistoryAsync.fulfilled, (state, action) => {
-
             state.cart = action.payload
             state.loading = false
         })
@@ -74,7 +71,6 @@ export const ordersSlice = createSlice({
             }
         })
     }
-
 })
 
 export const selectCart = (state) => {
@@ -95,24 +91,4 @@ export const selectToggle = (state) => {
     return state.orders.toggle
 }
 
-
-
-
 export default ordersSlice.reducer
-
-
-// for(const shoe of state.cart) {
-            //     console.log(shoe)
-            //     if(shoe.id === obj.shoeId) {
-            //         if(obj.addMinus === 1) {
-            //             console.log("shoe quantity increased")
-            //             shoe.quantity += 1
-            //         } else if(obj.addMinus === 0 && shoe.quantity === 1){
-            //             console.log("shoe removed from cart")
-            //             cart.splice(cart.indexOf(shoe))
-            //         } else if(obj.addMinus === 0 && shoe.quantity !== 1){
-            //             console.log("shoe quantiy decreased")
-            //             shoe.quantity -= 1
-            //         }
-            //     }
-            // }
