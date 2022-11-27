@@ -19,18 +19,14 @@ const AdminOrders = () => {
 
 
 
-return (
-  <>
-    <section>
+  return (
+    <>
       <h1> User Orders</h1>
-
       <ul>{orders.map((order) => {
         return <li key={order.id}><h3>{order.cost}</h3> <h4>{order.shippingAddress}</h4></li>
       })}</ul>
-    </section>
-
-  </>
-)
+    </>
+  )
 }
 
 export default AdminOrders

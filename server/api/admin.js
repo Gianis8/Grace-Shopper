@@ -24,10 +24,16 @@ router.put('/:id', async (req, res, next) => {
 // DELETE for /api/admin/:id
 router.delete('/:id', async (req, res, next) => {
     try {
-        const { id } = req.params
-        console.log(id, "$$$$$$$")
-        const deleteShoe = await shoe.findByPk(id)
-        await deleteShoe.destroy({where: {shoeId : id}})
+        const shoeId = req.params.id
+        console.log(shoeId, "$$$$$$$")
+        const deleteShoe = await shoe.findOne({where:{id:shoeId}})
+        console.log(deleteShoe)
+        await shoe.destroy({
+            where:{
+                id:shoeId
+            }
+        })
+        res.send(deleteShoe)
     } catch (err) {
         next(err)
     }

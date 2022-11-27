@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { authenticate } from '../store/authSlice'
-import { AllShoes } from './index'   
-import { Route, Routes } from 'react-router-dom';
-import { AddShoes } from '../store/shoesSlice';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import AdminUserData from './AdminUserData';
+import { addShoes } from '../store/shoesSlice';
+import { Accordion, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
+import AllShoes from './AllShoes';
+
 
 /**
   The AuthForm component can be used for Login or Sign Up.
@@ -22,46 +24,61 @@ const Admin = () => {
 
   async function handleSubmit(evt) {
     evt.preventDefault()
-dispatch(AddShoes({
-  name,
-  size,
-  price,
-  brand,
-  type,
-  color,
-}))
+    dispatch(addShoes({
+      name,
+      size,
+      price,
+      brand,
+      type,
+      color,
+    }))
 
   }
 
   return (
-    <>
-      <h1> Admin Page</h1>
-      <div>
-<section>
-<h1> Inventory</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='name'>Name</label>
-        <input value={name} onChange={(evt) => setName(evt.target.value)} />
-        <label htmlFor='size'>Size</label>
-        <input type ='number' value={size} onChange={(evt) => setSize(+evt.target.value)} />
-        <label htmlFor='brand'>Brand</label>
-        <input value={brand} onChange={(evt) => setBrand(evt.target.value)} />
-        <label htmlFor='type'>Type </label>
-        <input value={type} onChange={(evt) => setType(evt.target.value)} />
-        <label htmlFor='price'>Price</label>
-        <input type ='number' value={price} onChange={(evt) => setPrice(+evt.target.value)} />
-        <label htmlFor='color'>Color</label>
-        <input value={color} onChange={(evt) => setColor(evt.target.value)} />
-        <button type='add-inventory'>Add to inventory</button>
-      </form>
-      <Routes>
-        <Route path="/" element={<AllShoes />}>  
-        </Route>
-      </Routes>
-      </section>
-      </div>
-      
-    </>
+    <div id='invForm'>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group>
+          <Form.Label htmlFor='name'>Name</Form.Label>
+          <Form.Control name='name' value={name} onChange={(evt) => setName(evt.target.value)} />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label htmlFor='size'>Size</Form.Label>
+          <Form.Control name='size' type='number' value={size} onChange={(evt) => setSize(+evt.target.value)} />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label htmlFor='brand'>Brand</Form.Label>
+          <Form.Control name='brand' value={brand} onChange={(evt) => setBrand(evt.target.value)} />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label htmlFor='type'>Type </Form.Label>
+          <Form.Control name='type' value={type} onChange={(evt) => setType(evt.target.value)} />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label htmlFor='price'>Price</Form.Label>
+          <Form.Control name='price' type='number' value={price} onChange={(evt) => setPrice(+evt.target.value)} />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label htmlFor='color'>Color</Form.Label>
+          <Form.Control name='color' value={color} onChange={(evt) => setColor(evt.target.value)} />
+        </Form.Group>
+        <Button type='submit'>Add to inventory</Button>
+      </Form>
+      <Accordion >
+        <Accordion.Item eventKey='0'>
+          <Accordion.Header>Users</Accordion.Header>
+          <Accordion.Body>
+            <AdminUserData />
+          </Accordion.Body>
+        </Accordion.Item>
+        <Accordion.Item eventKey='1'>
+          <Accordion.Header>Inventory</Accordion.Header>
+          <Accordion.Body>
+            <AllShoes />
+          </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
+    </div>
   )
 }
 

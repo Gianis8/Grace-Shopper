@@ -44,14 +44,13 @@ const Main = () => {
         </span>
       </nav>
       <Routes>
-
         <Route path='/' element={<HomePage />} ></Route>
         <Route path='/athletic' element={<Athletic />} ></Route>
         <Route path='/cart' element={<Cart />} ></Route>
         <Route path='/casual' element={<Casual />} ></Route>
         <Route path='/login' element={<AppRoutes />} ></Route>
         <Route path='/shoe/:id' element={<SingleShoe />} ></Route>
-        <Route path='/admin' element={<><Admin /> <AdminUserData /></>} ></Route>
+        <Route path='/admin' element={<Admin />} ></Route>
         <Route path='/signup' element={<SignUp />} ></Route>
         <Route path='/orders' element={<AdminOrders />} ></Route>
       </Routes>

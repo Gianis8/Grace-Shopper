@@ -16,24 +16,26 @@ const Casual = () => {
 
   console.log("casual shoes:", shoes)
   return (
-    <>
-      <h1>Shop Casual</h1>
-      <div className='shoeLayout'>
-        <ul>
-          {shoes.map((shoe) => {
-            return <li key={shoe.id}><Link to={`/shoe/${shoe.id}`}><h3>{shoe.name}</h3><img src={shoe.imageUrl} /></Link></li>
-          })}
-        </ul>
+    <div className="main">
+      <h1 id="shopAthletic">Athletic</h1>
+      <div id="athleticPage">
+        <div className='labels'>
+          <label>Filtering: </label>
+          <select id="filter">
+            <option value="price">Price</option>
+            <option value="brand">Brand</option>
+            <option value="sizes">Sizes</option>
+          </select>
+        </div>
+        <div className='shoeLayout'>
+          <ul id='athleticShoes'>
+            {shoes.map((shoe) => {
+              return <li key={shoe.id} className="athleticLi"><Link className='athleticLi' to={`/shoe/${shoe.id}`}><div className='athLeftLi'><h4>{shoe.name}</h4><img src={shoe.imageUrl} /></div><div><h5 className='shoeBrand'>{shoe.brand}</h5><p className="athP">{shoe.description}</p></div></Link></li>
+            })}
+          </ul>
+        </div>
       </div>
-      <div className='labels'>
-      <label>Filtering : </label>
-      <select id="filter">
-        <option value="price">Price</option>
-        <option value="brand">Brand</option>
-        <option value="sizes">Sizes</option>
-      </select>
-      </div>
-    </>
+    </div>
   )
 }
 

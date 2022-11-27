@@ -22,8 +22,8 @@ router.post('/', async (req, res, next) => {
     try {
         const body= req.body
         console.log(body)
-        const added= await shoe.create(body)
-        // res.send(added)
+        const added = await shoe.create(body)
+        res.send(added)
     } catch (err) {
         console.log(err)
         next(err)
@@ -51,10 +51,16 @@ router.get('/:id', async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
     try {
-        const { id } = req.params
+        const shoeId = req.params.id
         console.log(id, "$$$$$$$")
-        // const deleteShoe = await shoe.findByPk(id)
-        // res.send(await deleteShoe.destroy())
+        const deleteShoe = await shoe.findOne({where:{id:shoeId}})
+        console.log(deleteShoe)
+        await shoe.destroy({
+            where:{
+                id:shoeId}
+            }
+        )
+        res.send(deleteShoe)
     } catch (err) {
         next(err)
     }

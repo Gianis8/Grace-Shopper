@@ -13,7 +13,6 @@ import { Link } from 'react-router-dom';
 const AdminUserData = () => {
   const dispatch = useDispatch()
   const users = useSelector(selectUsers)
-  console.log(users)
   useEffect(() => {
     dispatch(fetchUsersAsync())
   }, [dispatch])
@@ -24,12 +23,10 @@ const AdminUserData = () => {
 
   return (
     <>
-     <section>
-      <h1> User Data</h1>
-      <ul>{users.map((user) => {
-        return <li key={user.id}><Link to={`/orders`}><h3>{user.username}</h3></Link>{user.email}</li>
+      <h3 id="h3userData"> User Data</h3>
+      <ul id='adminData'>{users.map((user) => {
+        return <li className="adminLi" key={user.id}><Link to={`/orders`}><h5>{user.username}</h5><h6>{user.email}</h6></Link></li>
       })}</ul>
-       </section>
     </>
   )
 }
