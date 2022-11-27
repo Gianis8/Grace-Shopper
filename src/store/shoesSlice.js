@@ -85,16 +85,18 @@ export const shoesSlice = createSlice({
         })
         builder.addCase(deleteSingleShoe.fulfilled, (state, action) => {
             const shoe = action.payload
-            console.log("state.allshoe:", state.allShoes, "state.casual", state.casual, "state.athletci", state.athletic)
-            for(let i = 0; i<state.allShoes ; i++) {
+            for(let i = 0; i< state.allShoes.length ; i++) {
                 if(state.allShoes[i].id === shoe.id) {
                     state.allShoes.splice(i,1)
+                    console.log("shoe removed from all shoes")
                 }
                 if(state.athletic[i] === shoe.id) {
                     state.athletic.splice(i,1)
+                    console.log("shoe removed from athletic")
                 }
                 if(state.casual[i] === shoe.id) {
                     state.casual.splice(i,1)
+                    console.log("shoe removed from causal")
                 }
             }
         })

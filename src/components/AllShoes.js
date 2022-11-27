@@ -8,6 +8,7 @@ import { Button } from "react-bootstrap";
 const AllShoes = () => {
     const dispatch = useDispatch()
     const shoes = useSelector(selectAllShoes)
+    console.log(shoes)
 
     useEffect(() => {
         dispatch(fetchAllShoes())
