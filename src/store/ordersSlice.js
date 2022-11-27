@@ -50,7 +50,8 @@ export const ordersSlice = createSlice({
             state.loading = false
         })
         builder.addCase(fetchOrdersHistoryAsync.fulfilled, (state, action) => {
-            state.cart = action.payload
+            console.log(action.payload)
+            state.orders = action.payload
             state.loading = false
         })
         builder.addCase(updateQuant.fulfilled, (state, action) => {
@@ -89,6 +90,10 @@ export const selectCartTotal = (state) => {
 
 export const selectToggle = (state) => {
     return state.orders.toggle
+}
+
+export const selectOrders = (state) => {
+    return state.orders.orders
 }
 
 export default ordersSlice.reducer

@@ -57,7 +57,6 @@ export const usersSlice = createSlice({
             state.user = action.payload
         })
     }
-
 })
 
 export const selectUsers = (state) => {

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { authenticate } from '../store/authSlice'
-import { fetchCartAsync, selectCart } from '../store/ordersSlice';
+import { useParams } from 'react-router-dom';
+import {  fetchOrdersHistoryAsync, selectCart, selectOrders } from '../store/ordersSlice';
 /**
   The AuthForm component can be used for Login or Sign Up.
   Props for Login: name="login", displayName="Login"
@@ -10,21 +11,35 @@ import { fetchCartAsync, selectCart } from '../store/ordersSlice';
 
 const AdminOrders = () => {
 
+  const { id } = useParams()
   const dispatch = useDispatch()
-  const orders = useSelector(selectCart)
-  console.log(orders)
+
   useEffect(() => {
-    dispatch(fetchCartAsync())
+    dispatch(fetchOrdersHistoryAsync(id))
   }, [dispatch])
 
-
+    const orders = useSelector(selectOrders)
+  console.log("orders:",orders)
 
   return (
     <>
-      <h1> User Orders</h1>
-      <ul>{orders.map((order) => {
-        return <li key={order.id}><h3>{order.cost}</h3> <h4>{order.shippingAddress}</h4></li>
-      })}</ul>
+      <h1> User-{id} Orders</h1>
+      <Container>
+        <Row>
+          <Col>Id</Col>
+          <Col>Price</Col>
+          <Col>Created At</Col>
+          <Col>Shipping Address</Col>
+          <Col>Shoes</Col>
+        </Row>
+            <Row key={orders[0].id}>
+              <Col>{orders[0].id}</Col>
+              <Col>{orders[0].cost}</Col>
+              <Col>{orders[0].createdAt}</Col>
+              <Col>{orders[0].shippingAddress}</Col>
+              <Col>{orders[0].shoes}</Col>
+            </Row>
+      </Container>
     </>
   )
 }

@@ -23,7 +23,14 @@ router.get('/cart/:id', async (req, res, next) => {
 router.get('/history/:id', async (req, res, next) => {
     const id = req.params.id
     try {
-        res.send(await order.findAll({ where: { userId: id, status: 'complete' }, include: [shoe] }))
+        const orders = await order.findAll({ 
+            where: { 
+                userId: id, 
+                status: 'complete' 
+            }, 
+            include: [shoe] 
+        })
+        res.send(orders)
     } catch (err) {
         next(err)
     }

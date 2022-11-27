@@ -25,7 +25,7 @@ const AdminUserData = () => {
     <>
       <h3 id="h3userData"> User Data</h3>
       <ul id='adminData'>{users.map((user) => {
-        return <li className="adminLi" key={user.id}><Link to={`/orders`}><h5>{user.username}</h5><h6>{user.email}</h6></Link></li>
+        return <li className="adminLi" key={user.id}><Link to={`/orders/${user.id}`}><h5>{user.username}</h5><h6>{user.email}</h6></Link></li>
       })}</ul>
     </>
   )

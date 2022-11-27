@@ -52,7 +52,7 @@ const Main = () => {
         <Route path='/shoe/:id' element={<SingleShoe />} ></Route>
         <Route path='/admin' element={<Admin />} ></Route>
         <Route path='/signup' element={<SignUp />} ></Route>
-        <Route path='/orders' element={<AdminOrders />} ></Route>
+        <Route path='/orders/:id' element={<AdminOrders />} ></Route>
       </Routes>
 
     </>

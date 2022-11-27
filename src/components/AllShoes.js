@@ -14,8 +14,6 @@ const AllShoes = () => {
         dispatch(fetchAllShoes())
     }, [])
 
-
-
     const handleDelete = async (e) => {
         console.log(e.target.value)
         const id = e.target.value
